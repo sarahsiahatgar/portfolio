@@ -1,0 +1,752 @@
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.arcade-controller-img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  top: -3px;
+}
+
+.page-title {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 30px auto 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.title-spacer {
+  grid-column: 1;
+}
+
+.page-title h1 {
+  grid-column: 2;
+  justify-self: center;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 350;
+  color: #1e2319;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.page-title h1 span {
+  font-family: 'Press Start 2P', monospace, sans-serif;
+}
+
+.games-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.game-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+.game-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  background-color: rgba(43, 51, 31, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 3px solid #12150f;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-name {
+  margin-top: 10px;
+  color: #2b331f;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-weight: 400;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* PWA STYLE */
+.arcade-install-btn {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  height: 44px;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #b5be8a;
+  background: #49523c;
+  border-radius: 50px;
+  border: 2px solid #12150f;
+  box-shadow: inset 0 -3px 0 #2e3c27, inset 0 2px 0 #606b51, 0 6px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.arcade-install-btn:hover {
+  color: #1e2319;
+  background: #606b51;
+  border-color: #12150f;
+  transform: translateY(-2px);
+  box-shadow: inset 0 -3px 0 #49523c, inset 0 2px 0 #7c8a6a, 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.arcade-install-btn:active,
+.arcade-install-btn:focus {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 0 #000, 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+
+  .page-title {
+    margin-top: 0 !important; 
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  .page-title h1 {
+    font-size: 1.2rem;
+  }
+  
+  .arcade-controller-img {
+    width: 40px;
+  }
+
+  .arcade-install-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 10px;
+    transform: none;
+  }
+
+  .arcade-install-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .arcade-install-btn:active,
+  .arcade-install-btn:focus {
+    transform: translateY(1px);
+  }
+
+  .arcade-install-btn .btn-text {
+    display: none;
+  }
+
+  .arcade-install-btn .install-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .coin-only-frame {
+    width: calc((50% - 7.5px) * 1.28);
+  }
+}
+/* ============================
+   LED Marquee Screen
+   ============================ */
+.arcade-led-wrap {
+  grid-column: 2;
+  justify-self: center;
+  position: relative;
+  width: 100%;
+  max-width: var(--led-max, 460px);
+}
+
+.arcade-led-screen {
+  width: 100%;
+  max-width: var(--led-max, 460px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 26px 20px 22px;
+
+  background: #0a0f08;
+  border: 3px solid #12150f;
+  border-radius: 10px;
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.9), 0 0 18px rgba(255, 59, 48, 0.12);
+}
+
+.arcade-led-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0px,
+    rgba(0, 0, 0, 0.25) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.arcade-led-border {
+  position: absolute;
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.arcade-led-border svg {
+  width: 100%;
+  height: 100%;
+}
+
+.arcade-led-border rect {
+  fill: none;
+  stroke: var(--arcade-neon-red, #ff3b30);
+  stroke-width: 3;
+  stroke-dasharray: 14 11;
+  animation: arcade-marquee-chase 13s linear infinite;
+}
+
+@keyframes arcade-marquee-chase {
+  0%   { stroke-dashoffset: 0;   opacity: 1; filter: brightness(1); }
+  17%  { stroke-dashoffset: -75; opacity: 1; filter: brightness(1); }
+  18%  { stroke-dashoffset: -75; opacity: 1; }
+  19%  { opacity: 0.2; }
+  20%  { opacity: 1; }
+  21%  { opacity: 0.2; }
+  22%  { opacity: 1; stroke-dashoffset: -75; }
+  40%  { stroke-dashoffset: 0; opacity: 1; }
+  41%  { stroke-dashoffset: 0; }
+  42%  { filter: brightness(2.4); }
+  43%  { filter: brightness(1); }
+  44%  { filter: brightness(2.4); }
+  45%  { filter: brightness(1); stroke-dashoffset: 0; }
+  68%  { stroke-dashoffset: -75; opacity: 1; filter: brightness(1); }
+  69%  { stroke-dashoffset: -75; }
+  100% { stroke-dashoffset: 0; opacity: 1; filter: brightness(1); }
+}
+
+.arcade-led-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  position: relative;
+}
+
+.arcade-led-icon {
+  flex-shrink: 0;
+  color: var(--arcade-neon-red, #ff3b30);
+  filter: drop-shadow(0 0 6px #ff3b30) drop-shadow(0 0 12px rgba(255, 59, 48, 0.9));
+}
+
+.arcade-led-text {
+  font-family: 'Press Start 2P', monospace, sans-serif !important;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  line-height: 1.7;
+  color: var(--arcade-neon-red, #ff4d4d);
+  text-shadow: 0 0 4px #ff3b30, 0 0 10px #ff3b30, 0 0 20px rgba(255, 59, 48, 0.9);
+  text-align: center;
+}
+
+.arcade-led-line-1,
+.arcade-led-line-2 {
+  display: block;
+  font-family: 'Press Start 2P', monospace, sans-serif !important;
+}
+
+.arcade-led-line-1 {
+  animation: arcade-flicker-steady 7s infinite;
+}
+
+.arcade-led-line-2 {
+  animation: arcade-flicker-broken 4.4s infinite;
+}
+
+@keyframes arcade-flicker-steady {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.4; text-shadow: none; }
+  94% { opacity: 1; text-shadow: 0 0 6px var(--arcade-neon-red), 0 0 14px var(--arcade-neon-red), 0 0 26px rgba(255, 59, 48, 0.65); }
+}
+
+@keyframes arcade-flicker-broken {
+  0%, 100% { opacity: 1; }
+  4% { opacity: 0.3; text-shadow: none; }
+  5% { opacity: 1; text-shadow: 0 0 6px var(--arcade-neon-red), 0 0 14px var(--arcade-neon-red), 0 0 26px rgba(255, 59, 48, 0.65); }
+  6% { opacity: 0.85; }
+  7% { opacity: 0.25; text-shadow: none; }
+  9% { opacity: 1; text-shadow: 0 0 6px var(--arcade-neon-red), 0 0 14px var(--arcade-neon-red), 0 0 26px rgba(255, 59, 48, 0.65); }
+  46% { opacity: 1; }
+  47% { opacity: 0.35; text-shadow: none; }
+  48% { opacity: 0.9; }
+  49% { opacity: 1; text-shadow: 0 0 6px var(--arcade-neon-red), 0 0 14px var(--arcade-neon-red), 0 0 26px rgba(255, 59, 48, 0.65); }
+  74% { opacity: 1; }
+  75% { opacity: 0.4; text-shadow: none; }
+  76% { opacity: 1; text-shadow: 0 0 6px var(--arcade-neon-red), 0 0 14px var(--arcade-neon-red), 0 0 26px rgba(255, 59, 48, 0.65); }
+}
+
+@media (max-width: 768px) {
+  .arcade-led-wrap {
+    --led-max: 340px;
+    margin-top: 20px;
+  }
+
+  .arcade-led-screen {
+    padding: 18px 12px 16px;
+  }
+
+  .arcade-led-content {
+    gap: 30px;
+  }
+
+  .arcade-led-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .arcade-led-text {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .arcade-led-wrap {
+    --led-max: 250px;
+  }
+
+  .arcade-led-content {
+    gap: 18px;
+  }
+
+  .arcade-led-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .arcade-led-text {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+  }
+}
+/* ============================
+   Decorative coin-op slot (no game, end of grid)
+   ============================ */
+.coin-only-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-column: span 2;
+}
+
+.coin-only-frame {
+  display: flex;
+  align-items: stretch;
+  width: calc((50% - 12.5px) * 1.28);
+  margin-left: 0;
+  position: relative;
+  touch-action: none;
+}
+
+.crt-off-screen {
+  flex: 0 0 78.125%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 3px solid #12150f;
+  border-right: none;
+  background: radial-gradient(ellipse 130% 130% at 42% 36%, #262d1d 0%, #10130c 55%, #000 100%);
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.95), inset 0 0 50px rgba(0, 0, 0, 0.7);
+}
+
+.crt-off-screen .crt-picture {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+  z-index: 1;
+}
+
+.crt-off-screen .crt-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.crt-off-screen .crt-anim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.crt-off-screen .crt-picture.showtime .crt-noise {
+  opacity: 0;
+}
+
+.crt-off-screen .crt-picture.showtime .crt-anim {
+  opacity: 1;
+}
+
+.crt-off-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.32) 0px,
+    rgba(0, 0, 0, 0.32) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  transition: opacity 0.5s ease;
+}
+
+.crt-off-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse 55% 38% at 30% 20%, rgba(255, 255, 255, 0.20), transparent 60%),
+    radial-gradient(ellipse 145% 145% at 50% 60%, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.crt-off-screen.is-off {
+  background: #000;
+}
+
+.crt-off-screen.is-off::before {
+  opacity: 0.3;
+}
+
+.crt-off-screen.is-off::after {
+  opacity: 0.35;
+}
+
+@keyframes crtPictureOff {
+  0% { transform: scaleX(1) scaleY(1); opacity: 1; filter: brightness(1); }
+  35% { transform: scaleX(1) scaleY(0.035); opacity: 1; filter: brightness(2.4); }
+  68% { transform: scaleX(0.08) scaleY(0.025); opacity: 1; filter: brightness(3.6); }
+  100% { transform: scaleX(0.02) scaleY(0.02); opacity: 0; filter: brightness(4); }
+}
+
+@keyframes crtPictureOn {
+  0% { transform: scaleX(0.02) scaleY(0.02); opacity: 0; filter: brightness(4); }
+  14% { transform: scaleX(0.02) scaleY(0.02); opacity: 1; filter: brightness(3); }
+  42% { transform: scaleX(1) scaleY(0.035); opacity: 1; filter: brightness(2.6); }
+  70% { transform: scaleX(1) scaleY(0.9); opacity: 1; filter: brightness(1); }
+  85% { transform: scaleX(1) scaleY(1); opacity: 1; filter: brightness(1.4); }
+  100% { transform: scaleX(1) scaleY(1); opacity: 1; filter: brightness(1); }
+}
+
+.crt-off-screen .crt-picture.crt-power-off {
+  animation: crtPictureOff 0.45s cubic-bezier(0.7, 0, 0.4, 1) forwards;
+}
+
+.crt-off-screen .crt-picture.is-hidden {
+  opacity: 0;
+  transform: scale(0.02);
+}
+
+.crt-off-screen .crt-picture.crt-power-on {
+  animation: crtPictureOn 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+.crt-off-screen .crt-flash-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%) scaleX(0);
+  opacity: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+@keyframes crtFlashOff {
+  0% { opacity: 0; transform: translateY(-50%) scaleX(1); }
+  35% { opacity: 1; transform: translateY(-50%) scaleX(1); }
+  68% { opacity: 1; transform: translateY(-50%) scaleX(0.25); }
+  100% { opacity: 0; transform: translateY(-50%) scaleX(0); }
+}
+
+@keyframes crtFlashOn {
+  0% { opacity: 0; transform: translateY(-50%) scaleX(0); }
+  14% { opacity: 1; transform: translateY(-50%) scaleX(0); }
+  42% { opacity: 1; transform: translateY(-50%) scaleX(1); }
+  75% { opacity: 1; transform: translateY(-50%) scaleX(1); }
+  100% { opacity: 0; transform: translateY(-50%) scaleX(1); }
+}
+
+.crt-off-screen .crt-flash-line.flash-off {
+  animation: crtFlashOff 0.45s cubic-bezier(0.7, 0, 0.4, 1) forwards;
+}
+
+.crt-off-screen .crt-flash-line.flash-on {
+  animation: crtFlashOn 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+.coin-only-frame .coin-slot-box {
+  position: relative;
+  flex: 1;
+  min-width: 30px;
+  border-radius: 0 12px 12px 0;
+  box-sizing: border-box;
+  border: 3px solid #12150f;
+  background: linear-gradient(155deg, #8a6a45 0%, #6b4a2c 18%, #7a5432 35%, #5a3a1e 50%, #6e4c2a 65%, #4a2f16 82%, #5c3d20 100%);
+  box-shadow: inset 2px 2px 3px rgba(255, 220, 180, 0.15), inset -2px -2px 4px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.coin-only-frame .stamp {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 58%;
+  height: 9%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.coin-only-frame .slot-label {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  height: 16%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 0.4rem;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.65);
+  text-shadow: 0 1px 0 rgba(255, 230, 200, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-only-frame .slot-label-line {
+  display: block;
+}
+
+.coin-only-frame .slot-groove {
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  width: 4px;
+  height: 13%;
+  transform: translateX(-50%);
+  background: #0a0603;
+  border-radius: 2px;
+  box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.9), inset -1px 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.coin-only-frame .change-tray {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 74%;
+  height: 21%;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.coin-only-frame .tray-slot {
+  position: relative;
+  width: 100%;
+  height: 42%;
+  top: 12%;
+  background: #0a0603;
+  border-radius: 2px;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.9);
+}
+
+.coin-only-frame .tray-slot::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  background: linear-gradient(to bottom, rgba(255, 230, 190, 0.18), transparent);
+}
+
+.coin-only-frame .rivet {
+  position: absolute;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 35% 30%, #cbb089, #5a3d22 70%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.coin-only-frame .rivet-top {
+  top: 4%;
+}
+
+.coin-only-frame .rivet-bottom {
+  bottom: 4%;
+}
+
+.coin-only-frame .pixel-coin-wrap {
+  position: absolute;
+  top: -13px;
+  left: calc(50% + 30px);
+  width: 12px;
+  height: 12px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 5;
+}
+
+.coin-only-frame .pixel-coin-wrap:active {
+  cursor: grabbing;
+}
+
+.coin-only-frame .coin-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+}
+
+/* ============================
+   Bronze Coin Slot Stickers
+   ============================ */
+.arcade-sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.arcade-sticker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.arcade-sticker.sticker-smiley {
+  width: clamp(10px, 42%, 25px);
+  height: clamp(10px, 42%, 25px);
+  top: 85%;
+  left: -8%;
+  transform: rotate(-15deg);
+}
+
+.arcade-sticker.sticker-mushroom {
+  width: clamp(7px, 25%, 15px);
+  height: clamp(7px, 25%, 15px);
+  bottom: 28%;
+  left: 7%;
+  transform: rotate(-8deg);
+}
+
+.arcade-sticker.sticker-beer {
+  width: clamp(8px, 27%, 16px);
+  height: clamp(8px, 27%, 16px);
+  bottom: 30%;
+  right: 5%;
+  transform: rotate(20deg);
+}
+
+.arcade-sticker.sticker-badge {
+  width: clamp(6px, 22%, 13px);
+  height: clamp(6px, 22%, 13px);
+  top: 2%;
+  right: 2%;
+  transform: rotate(30deg);
+}

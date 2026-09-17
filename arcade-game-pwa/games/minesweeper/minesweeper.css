@@ -1,0 +1,299 @@
+minesweeper-game-card,
+minesweeper-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+minesweeper-game-card .game-card,
+minesweeper-card .game-card {
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+minesweeper-game-card .game-body,
+minesweeper-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 520px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.mine-title {
+  font-size: 0.95rem;
+}
+
+.mine-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.minesweeper-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 36px);
+  grid-template-rows: repeat(9, 36px);
+  gap: 4px;
+  margin: 4px 0 2px 0;
+  background-color: rgba(30, 35, 25, 0.6);
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mine-cell {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-control, #b4c5a8);
+  border: 1px solid #5b6952;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #242a1f;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.mine-cell:hover {
+  background-color: var(--color-control-hover, #c4d5b8);
+  border-color: var(--color-accent, #5b6951);
+}
+
+.mine-cell:focus-visible {
+  outline: 2px solid var(--color-accent, #d1db9e);
+  outline-offset: 1px;
+}
+
+.mine-cell.revealed {
+  background-color: #242a1f;
+  border-color: rgba(255, 255, 255, 0.05);
+  cursor: default;
+}
+
+.mine-cell.flagged {
+  color: #e74c3c;
+}
+
+.mine-cell .question-symbol {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+}
+
+.mine-cell[data-value="1"] { color: #8cb8d0; }
+.mine-cell[data-value="2"] { color: #98cb8d; }
+.mine-cell[data-value="3"] { color: #e2c07d; }
+.mine-cell[data-value="4"] { color: #d08c8c; }
+.mine-cell[data-value="5"] { color: #cb8dc8; }
+.mine-cell[data-value="6"] { color: #8dcbc8; }
+.mine-cell[data-value="7"] { color: #f0f0f0; }
+.mine-cell[data-value="8"] { color: #b0b0b0; }
+
+#restartMineBtn, #mineSizeToggleBtn {
+  width: 100%;
+  max-width: 260px;
+  margin-top: 20px;
+}
+
+.mine-cell.chord-peek {
+  background-color: #242a1f !important;
+  box-shadow: none !important;
+  border: 1px solid #3b4432 !important;
+}
+
+minesweeper-game-card .game-help-overlay,
+minesweeper-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+minesweeper-game-card .game-help-overlay.active,
+minesweeper-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@keyframes boardShake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  20% { transform: translate(-3px, 0px) rotate(-1deg); }
+  40% { transform: translate(3px, 2px) rotate(1deg); }
+  60% { transform: translate(-1px, -1px) rotate(0deg); }
+  80% { transform: translate(1px, 2px) rotate(-1deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.board-shake {
+  animation: boardShake 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .minesweeper-grid {
+    grid-template-columns: repeat(9, minmax(30px, 34px));
+    grid-template-rows: repeat(9, minmax(30px, 34px));
+    gap: 3px;
+  }
+  .mine-cell {
+    width: auto;
+    height: auto;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .minesweeper-grid {
+    grid-template-columns: repeat(9, 30px);
+    grid-template-rows: repeat(9, 30px);
+    gap: 2px;
+    padding: 6px;
+  }
+  .mine-cell {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+}
+
+/* RETRO LED SCREEN */
+minesweeper-card .arcade-marquee-screen,
+minesweeper-game-card .arcade-marquee-screen {
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 6px 0;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8), 0 0 5px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Base Text */
+minesweeper-card .arcade-marquee-text,
+minesweeper-game-card .arcade-marquee-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  
+  animation: marqueeScroll 6s linear infinite;
+}
+
+/* 🏆 Win State */
+minesweeper-card .arcade-marquee-screen.win-state .arcade-marquee-text,
+minesweeper-game-card .arcade-marquee-screen.win-state .arcade-marquee-text {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+  animation: retroRiseIn 0.8s ease-out forwards, goldGlowPulse 1.5s infinite alternate ease-in-out 0.8s;
+}
+
+/* 💥 Game Over State */
+minesweeper-card .arcade-marquee-screen.game-over-state .arcade-marquee-text,
+minesweeper-game-card .arcade-marquee-screen.game-over-state .arcade-marquee-text {
+  color: #e74c3c;
+  text-shadow: 0 0 8px rgba(231, 76, 60, 0.9);
+  animation: retroRiseIn 0.5s ease-out forwards, redBlink 0.4s infinite alternate 0.5s;
+}
+
+/* 🚩 Flag Placed State */
+minesweeper-card .arcade-marquee-screen.flag-state .arcade-marquee-text,
+minesweeper-game-card .arcade-marquee-screen.flag-state .arcade-marquee-text {
+  color: var(--color-accent, #d1db9e);
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.8);
+  animation: retroRiseIn 0.4s ease-out forwards;
+}
+
+/* Active Gameplay State */
+minesweeper-card .arcade-marquee-screen.active-state .arcade-marquee-text,
+minesweeper-game-card .arcade-marquee-screen.active-state .arcade-marquee-text {
+  animation: none;
+  color: #39ff14;
+  transform: none;
+}
+
+/* --- Keyframe Animations --- */
+
+/* 1. Horizontal Scroll for Start Screen (Right to Left) */
+@keyframes marqueeScroll {
+  0% { 
+    transform: translate3d(100%, 0, 0); 
+  }
+  100% { 
+    transform: translate3d(-100%, 0, 0); 
+  }
+}
+
+/* 2. Slow Motion Vertical Rise */
+@keyframes retroRiseIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 120%, 0);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 3. Gold Glow Effect */
+@keyframes goldGlowPulse {
+  0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.6); }
+  100% { text-shadow: 0 0 12px rgba(255, 215, 0, 1); }
+}
+
+/* 4. Red Game Over Blink */
+@keyframes redBlink {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}

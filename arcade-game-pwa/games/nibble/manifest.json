@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/nibble/",
+  "name": "Nibble",
+  "short_name": "Nibble",
+  "start_url": "./game-nibble.html",
+  "scope": "/arcade-game-pwa/games/nibble/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-nibble.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-nibble.WebP",
+      "sizes": "75x75",
+      "type": "image/webp"
+    }
+  ]
+}

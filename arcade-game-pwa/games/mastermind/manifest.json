@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/mastermind/",
+  "name": "Mastermind",
+  "short_name": "Mastermind",
+  "start_url": "./game-mastermind.html",
+  "scope": "/arcade-game-pwa/games/mastermind/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-mastermind.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-mastermind.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

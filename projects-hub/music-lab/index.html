@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Lab | Sara's Portfolio</title>
+  <link rel="icon" href="/img/logo.WebP">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/globalstyle.css">
+  <link rel="stylesheet" href="music-lab.css">
+
+  <!-- ABCjs Library -->
+  <script src="https://cdn.jsdelivr.net/npm/abcjs@6.4.4/dist/abcjs-basic-min.js"></script>
+  <!-- PDF Export Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/svg2pdf.js@2.2.3/dist/svg2pdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar Placeholder -->
+  <div id="header-placeholder"></div>	
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <span class="eyebrow">Project</span>
+    <h1>Cello & Piano Music Lab (Beta!)</h1>
+    <div class="title-rule"></div>
+    <div class="title-rule-thin"></div>
+  </section>
+
+  <!-- Project Introduction Note -->
+  <div class="note-card">
+    <span class="info-icon" tabindex="0" onclick="this.classList.toggle('active')">i
+      <span class="info-tooltip">
+        An interactive music studio to write, play, and store your compositions in the cloud for 7 days, or export directly as a PDF or even export the Audio!
+      </span>
+    </span>
+    <p>
+      Welcome to my interactive Cello and Piano Music Lab! Let your wild creativity go and enjoy creating new songs.
+      <br><em>Please note that this project is currently in beta, so some parts might have minor quirks (especially as a smartphone user), e.g. the projects cannot be saved in database yet! but feel free to download the PDF or Audio, while I'm still working on it. Please feel free to share any feedback or ideas!</em>
+    </p>
+  </div>
+
+  <!-- MAIN MUSIC STUDIO CONTAINER -->
+  <div class="music-layout-wrapper">
+    <main class="widget-card music-card">
+
+    <!-- STUDIO TOOLBAR: INSTRUMENT & CLOUD PERSISTENCE -->
+    <div class="studio-toolbar no-select">
+      <div class="toolbar-section">
+        <label>Instrument:</label>
+        <div class="toggle-buttons">
+          <button type="button" id="modeCello" class="mode-btn active" onclick="setInstrumentMode('cello')"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-cello"></use></svg> Cello</button>
+          <button type="button" id="modePiano" class="mode-btn" onclick="setInstrumentMode('piano')"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-piano"></use></svg> Piano</button>
+        </div>
+      </div>
+
+    <!-- Cloud Storage & Metadata Placeholder -->
+	<div class="toolbar-section no-select">
+	  <label for="projectNameInput">Cloud Project Name & Composer:</label>
+	  <div class="db-controls" style="flex-direction: column; gap: 6px;">
+		<div style="display: flex; gap: 8px; width: 100%;">
+		  <input type="text" id="projectNameInput" placeholder="Project name..." value="My First Composition" maxlength="100" style="flex: 1;" oninput="renderSheetMusic()">
+		  <input type="text" id="composerNameInput" placeholder="Composer name..." value="Anonymous" maxlength="50" style="flex: 1;" oninput="renderSheetMusic()">
+		</div>
+		<div style="display: flex; gap: 8px; width: 100%;">
+		  <button type="button" class="db-btn save-btn" onclick="saveProjectToDynamoDB()" style="flex: 1;"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-save"></use></svg> Save</button>
+		  <button type="button" class="db-btn load-btn" onclick="loadProjectFromDynamoDB()" style="flex: 1;"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-folder"></use></svg> Load</button>
+		</div>
+	  </div>
+	</div>
+    </div>
+
+    <!-- PRESETS & OCTAVE SCOPE -->
+    <div class="builder-controls no-select">
+
+	<!-- TEMPO, METRONOME & OCTAVE SCOPE ROW -->
+	<div class="control-group full-width-group horizontal-controls octave-row-controls">
+	<!-- 1. TEMPO (BPM) -->
+	<div class="control-item tempo-item">
+	  <label for="bpmInput">Tempo (BPM):</label>
+	  <div class="tempo-stepper">
+		<button type="button" class="tempo-step-btn" onclick="adjustBPM(-5)">-</button>
+		<input 
+		  type="number" 
+		  id="bpmInput" 
+		  value="120" 
+		  min="40" 
+		  max="240" 
+		  onchange="updateBPM(this.value)" 
+		  oninput="updateBPM(this.value)"
+		>
+		<button type="button" class="tempo-step-btn" onclick="adjustBPM(5)">+</button>
+	  </div>
+	</div>
+
+	  <!-- 2. METRONOME TOGGLE -->
+	  <div class="control-item metro-item">
+		<label>Metronome:</label>
+		<button type="button" id="metronomeBtn" class="metro-btn" onclick="toggleMetronome()">
+		  <span class="metro-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-metronom"></use></svg></span> Off
+		</button>
+	  </div>
+
+	  <!-- 3. OCTAVE SCOPE -->
+	  <div class="control-item octave-item">
+		<label>Octave Scope:</label>
+		<div class="octave-selector">
+		  <button type="button" class="oct-btn" data-oct="1" onclick="setOctave(1)">Oct 1</button>
+		  <button type="button" class="oct-btn" data-oct="2" onclick="setOctave(2)">Oct 2</button>
+		  <button type="button" class="oct-btn" data-oct="3" onclick="setOctave(3)">Oct 3</button>
+		  <button type="button" class="oct-btn active" data-oct="4" onclick="setOctave(4)">Oct 4</button>		  
+		  <button type="button" class="oct-btn" data-oct="5" onclick="setOctave(5)">Oct 5</button>
+		  <button type="button" class="oct-btn" data-oct="6" onclick="setOctave(6)">Oct 6</button>
+		  <button type="button" class="oct-btn" data-oct="7" onclick="setOctave(7)">Oct 7</button>
+		</div>
+	  </div>
+	</div>
+
+      <!-- TIME SIGNATURE, BARLINE & ACCIDENTAL CONTROLS -->
+      <div class="control-group full-width-group horizontal-controls">
+        <!-- TIME SIGNATURE DROPDOWN -->
+        <div class="control-item">
+          <label for="timeSignatureSelect">Time Signature:</label>
+          <select id="timeSignatureSelect" onchange="setTimeSignature(this.value)">
+            <option value="4/4" selected>4/4</option>
+            <option value="3/4">3/4</option>
+            <option value="2/4">2/4</option>
+            <option value="6/8">6/8</option>
+            <option value="free">Free Style</option>
+          </select>
+        </div>
+
+        <!-- BARLINE DROPDOWN -->
+        <div class="control-item">
+          <label for="barlineSelect">Barline:</label>
+          <div class="barline-controls">
+            <select id="barlineSelect" onchange="setBarline(this.value)">
+              <option value="|">Standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</option>
+              <option value="||">Double Bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||</option>
+              <option value="|:">Start Repeat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|:</option>
+              <option value=":|">End Repeat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:|</option>
+              <option value="::">Double Repeat&nbsp;&nbsp;&nbsp;&nbsp;::</option>
+              <option value="|]">End of Music&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|]</option>
+            </select>
+          </div>
+        </div>
+
+		<!-- KEY TRANSPOSE -->
+		<div class="control-item">
+		  <label>Transpose Key:</label>
+		  <div class="transpose-stepper">
+			<button type="button" class="trans-step-btn" onclick="adjustTranspose(-1)" title="Lower Pitch">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-flat"></use></svg></span> -1
+			</button>
+			<div id="transposeDisplay" class="transpose-badge">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-nat"></use></svg></span> 0 (Original)
+			</div>
+			<button type="button" class="trans-step-btn" onclick="adjustTranspose(1)" title="Raise Pitch">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-sharp"></use></svg></span> +1
+			</button>
+		  </div>
+		</div>
+
+        <!-- ACCIDENTAL BUTTONS -->
+        <div class="control-item">
+		  <label>Accidental:</label>
+		  <div class="accidental-selector">
+			<button type="button" class="acc-btn active" data-acc="natural" onclick="setAccidental('natural')">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-nat"></use></svg></span> Nat
+			</button>
+			<button type="button" class="acc-btn" data-acc="sharp" onclick="setAccidental('sharp')">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-sharp"></use></svg></span> Sharp
+			</button>
+			<button type="button" class="acc-btn" data-acc="flat" onclick="setAccidental('flat')">
+			  <span class="acc-icon"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-flat"></use></svg></span> Flat
+			</button>
+		  </div>
+		</div>
+      </div>
+
+      <!-- INSTRUMENT-SPECIFIC CLEF / HAND SELECTOR ROW -->
+      <div class="control-group full-width-group horizontal-controls instrument-clef-row">
+        <!-- CELLO CLEFS -->
+        <div class="control-item clef-control-item" id="celloClefSection" style="width: 100%;">
+		  <label>Cello Clefs:</label>
+		  <div class="clef-selector toggle-buttons">
+			<button type="button" class="mode-btn active" data-clef="bass" onclick="setCelloClef('bass')"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-bass"></use></svg> Bass</button>
+			<button type="button" class="mode-btn" data-clef="tenor" onclick="setCelloClef('tenor')"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-tenor"></use></svg> Tenor</button>
+			<button type="button" class="mode-btn" data-clef="treble" onclick="setCelloClef('treble')"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-treble"></use></svg> Treble</button>
+		  </div>
+		</div>
+	
+        <!-- PIANO CLEFS / HANDS -->
+        <div class="control-item clef-control-item" id="pianoClefSection" style="width: 100%; display: none;">
+          <label>Piano Clefs:</label>
+          <div class="clef-selector toggle-buttons">
+            <button type="button" class="mode-btn" data-hand="left" onclick="setPianoHand('left')">Bass (<svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-lefthand"></use></svg> Left Hand)</button>
+			<button type="button" class="mode-btn active" data-hand="right" onclick="setPianoHand('right')">Treble (<svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-righthand"></use></svg> Right Hand)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DURATION / NOTE VALUE SELECTOR -->
+	  <div class="control-group full-width-group">
+		<label>Duration / Note Value:</label>
+		<div class="duration-selector">
+			<button type="button" class="dur-btn" data-dur="4" onclick="setDuration('4')">
+			<span class="note-icon"><img src="svg/whole-note.svg" alt="Whole Note"></span>
+		</button>
+		<button type="button" class="dur-btn" data-dur="2" onclick="setDuration('2')">
+			<span class="note-icon"><img src="svg/half-note.svg" alt="Half Note"></span>
+		</button>
+		<button type="button" class="dur-btn active" data-dur="1" onclick="setDuration('1')">
+			<span class="note-icon"><img src="svg/quarter-note.svg" alt="Quarter Note"></span>
+		</button>
+		<button type="button" class="dur-btn" data-dur="1/2" onclick="setDuration('1/2')">
+			<span class="note-icon"><img src="svg/eighth-note.svg" alt="Eighth Note"></span>
+		</button>
+		<button type="button" class="dur-btn" data-dur="1/4" onclick="setDuration('1/4')">
+			<span class="note-icon"><img src="svg/sixteenth-note.svg" alt="Sixteenth Note"></span>
+		</button>
+		<button type="button" class="dur-btn" data-dur="1/8" onclick="setDuration('1/8')">
+			<span class="note-icon"><img src="svg/thirty-second-note.svg" alt="32nd Note"></span>
+		</button>
+			<button type="button" class="dot-btn" id="dotToggleBtn" onclick="toggleDotModifier()" title="Toggle Augmentation Dot">.</button>
+		</div>
+	  </div>
+    </div>
+
+    <!-- CHROMATIC NOTE PADS -->
+    <label class="no-select" style="margin-top: 10px;">Click to Play & Add Note:</label>
+    <div class="note-pad-grid no-select">
+		<button type="button" class="note-key" onclick="playAndAddNote('C')">
+		  <span class="note-letter">C</span>
+		  <span class="solfege">Do</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('D')">
+		  <span class="note-letter">D</span>
+		  <span class="solfege">Re</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('E')">
+		  <span class="note-letter">E</span>
+		  <span class="solfege">Mi</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('F')">
+		  <span class="note-letter">F</span>
+		  <span class="solfege">Fa</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('G')">
+		  <span class="note-letter">G</span>
+		  <span class="solfege">Sol</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('A')">
+		  <span class="note-letter">A</span>
+		  <span class="solfege">La</span>
+		</button>
+		<button type="button" class="note-key" onclick="playAndAddNote('B')">
+		  <span class="note-letter">B</span>
+		  <span class="solfege">Ti</span>
+		</button>
+    </div>
+
+    <!-- COMPOSITION ACTIONS -->
+    <div class="composition-actions no-select">
+	  <button type="button" class="action-btn" onclick="addManualLineBreak()"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-linebreak"></use></svg> Line Break</button>
+      <button type="button" class="action-btn warning" onclick="undoLastNote()"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-undo"></use></svg> Undo</button>
+	  <button type="button" id="redoBtn" class="action-btn warning" onclick="redoLastNote()" disabled><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-redo"></use></svg> Redo</button>
+      <button type="button" class="action-btn danger" onclick="clearComposition()"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-trash"></use></svg> Clear</button>
+	  <button type="button" id="pdfBtn" onclick="downloadSheetMusicPDF()" class="pdf-btn"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-pdf"></use></svg> Export PDF</button>
+	  <button type="button" id="audioBtn" onclick="downloadAudioFile()" class="audio-btn"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-download"></use></svg> Export Audio</button>
+    </div>
+
+    <!-- REAL-TIME FREQUENCY CANVAS VISUALIZER -->
+    <label class="no-select" for="visualizerCanvas" style="margin-top: 15px;">Live Audio Frequency Wave:</label>
+    <div class="canvas-wrapper no-select">
+      <canvas id="visualizerCanvas" width="600" height="120"></canvas>
+    </div>
+
+    <!-- LIVE SHEET MUSIC DISPLAY -->
+    <div class="sheet-container no-select">
+      <div class="score-toolbar">
+		  <div class="score-toolbar-actions">
+			<button type="button" id="playPauseBtn" onclick="togglePlayPause()" class="play-btn"><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-play"></use></svg> Play</button>
+			<button type="button" id="stopBtn" onclick="stopSheetMusic()" class="stop-btn" disabled><svg class="ml-svg-icon"><use href="svg/music-lab-icons.svg#icon-stop"></use></svg> Stop</button>
+		  </div>
+
+		  <!-- PRESETS -->
+		  <div class="control-group">
+			<label for="abcPreset">Preset:</label>
+			<select id="abcPreset" onchange="loadPreset()" class="preset-dropdown">
+			  <option value="bach">Bach - Cello Suite No. 1 Excerpt</option>
+			  <option value="ode">Beethoven - Ode to Joy</option>
+			  <option value="warmup">Scale Warmup</option>
+			</select>
+		  </div>
+      </div>
+
+      <div id="statusMsg" class="status-box"></div>
+
+      <!-- RENDERED SHEET MUSIC PAPER -->
+      <div id="sheetOutput">
+        <div id="paper"></div>
+      </div>
+    </div>
+
+    <!-- ABC TEXT CODE EDITOR -->
+    <details class="abc-details" id="abcDetails" open>
+      <summary class="no-select">View / Edit Raw ABC Notation Code</summary>
+      <textarea id="abcInput" placeholder="ABC notation..." oninput="onTextareaChange()"></textarea>
+    </details>
+  </main>
+</div>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+<!-- Script -->
+<script type="module">
+    import { initNavigation } from '../../js/global-navigation-and-footer.js';
+	import { initHamburger } from '../../js/global-hamburger.js';
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (initNavigation) await initNavigation();
+  });
+</script>
+<script type="module" src="js/pages/music-lab.js"></script>
+
+</body>
+</html>

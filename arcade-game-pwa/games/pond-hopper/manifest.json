@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/pond-hopper/",
+  "name": "Pond Hopper",
+  "short_name": "Pond Hopper",
+  "start_url": "./game-pond-hopper.html",
+  "scope": "/arcade-game-pwa/games/pond-hopper/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-pond-hopper.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-pond-hopper.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

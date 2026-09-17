@@ -1,0 +1,291 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+raindrop-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+raindrop-card .game-card {
+  max-width: 350px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+raindrop-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 520px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.raindrop-item-icon {
+  font-size: 1rem;
+}
+
+.raindrop-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.game-status {
+  color: var(--color-accent, #d1db9e);
+}
+
+/* RETRO LED SCREEN */
+raindrop-card .arcade-marquee-screen {
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 6px 8px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8), 0 0 5px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  margin-top: -5px;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base Text */
+raindrop-card .arcade-marquee-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  color: var(--color-accent, #d1db9e);
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.8);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  transform: none;
+  animation: none;
+}
+
+/* Active Gameplay / Pause State */
+raindrop-card .arcade-marquee-screen.active-state .arcade-marquee-text {
+  animation: none;
+  color: #39ff14;
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.8);
+  transform: none;
+}
+
+/* 💥 Game Over State */
+raindrop-card .arcade-marquee-screen.game-over-state .arcade-marquee-text {
+  color: var(--color-accent, #d1db9e);
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.9);
+  animation: retroRiseIn 0.5s ease-out forwards;
+}
+
+/* ☀️ Golden Drop / Water Lowered State */
+raindrop-card .arcade-marquee-screen.golden-state .arcade-marquee-text {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+  animation: retroRiseIn 0.8s ease-out forwards, goldGlowPulse 1.5s infinite alternate ease-in-out 0.8s;
+}
+
+/* ❌ Water Rise / Warning State */
+raindrop-card .arcade-marquee-screen.rise-state .arcade-marquee-text {
+  color: #ff073a;
+  text-shadow: 0 0 8px #ff073a;
+  animation: retroRiseIn 0.4s ease-out forwards;
+}
+
+/* --- Keyframe Animations --- */
+
+/* Slow Motion Vertical Rise */
+@keyframes retroRiseIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 120%, 0);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Gold Glow Effect */
+@keyframes goldGlowPulse {
+  0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.6); }
+  100% { text-shadow: 0 0 12px rgba(255, 215, 0, 1); }
+}
+
+#raindropCanvasWrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #3b4432;
+  background-color: var(--bg-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+canvas#raindropCanvas {
+  background-color: var(--bg-dark);
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.raindrop-keypad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1E2319;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 240px;
+  box-sizing: border-box;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.raindrop-display {
+  width: 100%;
+  height: 36px;
+  background: #1E2319;
+  color: #e2ecc2;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+}
+
+.raindrop-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.raindrop-keys-grid .action-btn {
+  width: 100%;
+  height: 38px;
+  margin: 0;
+  padding: 0;
+}
+
+#raindropSubmitBtn {
+  background: var(--color-accent, #2ECC71);
+  color: #111;
+  font-weight: bold;
+}
+
+.raindrop-action-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.raindrop-action-row .action-btn {
+  flex: 1;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+.raindrop-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.raindrop-items-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.raindrop-item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+raindrop-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+raindrop-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@keyframes slowBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.raindrop-blink-text {
+  animation: slowBlink 2.5s infinite ease-in-out;
+}
+
+.raindrop-neon-red {
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+}

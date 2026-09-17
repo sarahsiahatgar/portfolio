@@ -1,0 +1,34 @@
+# Local state files - never commit these
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files that may hold secrets
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Override files (usually local-only tweaks)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Provider plugins and modules downloaded by init
+.terraform/
+.terraform.lock.hcl
+
+# Saved plan output (can contain secrets)
+*.tfplan
+*.plan
+
+# CLI config that may contain credentials
+.terraformrc
+terraform.rc
+
+# APIs
+projects-hub/kitchen-byte/google-api-key.js

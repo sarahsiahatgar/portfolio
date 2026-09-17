@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/raindrop/",
+  "name": "Raindrop",
+  "short_name": "Raindrop",
+  "start_url": "./game-raindrop.html",
+  "scope": "/arcade-game-pwa/games/raindrop/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-raindrop.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-raindrop.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

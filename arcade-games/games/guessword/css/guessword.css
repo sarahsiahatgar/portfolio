@@ -1,0 +1,354 @@
+@font-face {
+  font-family: "Nahid";
+  src: url("./fonts/Nahid.woff2") format("woff2"),
+       url("./fonts/Nahid.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+guessword-game-card,
+guessword-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+guessword-card .game-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+guessword-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+guessword-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card-body, #2a3423);
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+guessword-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+guessword-card .game-help-header {
+  position: relative;
+  padding-left: 34px;
+  box-sizing: border-box;
+}
+
+guessword-card .game-help-header .help-toggle-btn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.guessword-grid[dir="rtl"] .gw-row {
+  flex-direction: row-reverse;
+}
+
+.gw-keyboard[dir="rtl"] .gw-keyboard-row {
+  flex-direction: row-reverse;
+}
+
+.guess-title {
+  font-size: 0.95rem;
+}
+
+.gw-lang-select {
+  background-color: var(--color-control);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.gw-streak-display {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-align: center;
+  min-height: 1em;
+}
+
+.gw-archive-nav { 
+  margin-top: -20px;
+ }
+
+.gw-archive-nav .action-btn.locked {
+  opacity: 0.5;
+}
+
+.gw-led-marquee {
+  width: 280px;
+  height: 40px;
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 0 4px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8), 0 0 4px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -20px;
+  margin-top: -15px;
+}
+
+.gw-led-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: block;
+  position: absolute;
+}
+
+.gw-led-marquee.gw-led-scrolling .gw-led-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) translateX(var(--marquee-start, 0px));
+  animation-name: gw-marquee-scroll;
+  animation-duration: var(--marquee-duration, 6s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.gw-led-marquee.gw-led-fa .gw-led-text {
+  font-family: "Nahid", "Courier New", Courier, monospace;
+  font-size: 1rem;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+}
+
+@keyframes gw-marquee-scroll {
+  from {
+    transform: translateY(-50%) translateX(var(--marquee-start, 0px));
+  }
+  to {
+    transform: translateY(-50%) translateX(var(--marquee-end, 0px));
+  }
+}
+
+.gw-led-marquee.gw-led-static .gw-led-text {
+  position: static;
+  transform: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  animation: gw-led-fade-in 0.3s ease forwards;
+}
+
+@keyframes gw-led-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gw-day-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-align: center;
+  min-height: 1em;
+}
+
+.guessword-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0;
+  background-color: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  max-height: 300px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.guessword-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.guessword-grid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.guessword-grid::-webkit-scrollbar-thumb {
+  background: var(--color-accent, #6aaa64);
+  border-radius: 4px;
+}
+
+.gw-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.gw-tile {
+  width: 50px;
+  height: 40px;
+  background-color: var(--color-control, #3b4432);
+  border: 2px solid #4a553f;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.gw-tile.filled {
+  border-color: var(--color-accent);
+  transform: scale(1.03);
+}
+
+.gw-tile.correct {
+  background-color: #6aaa64 !important;
+  border-color: #6aaa64 !important;
+  color: #ffffff !important;
+}
+
+.gw-tile.present {
+  background-color: #c9b458 !important;
+  border-color: #c9b458 !important;
+  color: #ffffff !important;
+}
+
+.gw-tile.absent {
+  background-color: var(--color-ai, #e74c3c) !important;
+  border-color: var(--color-ai, #e74c3c) !important;
+  color: #ffffff !important;
+}
+
+.gw-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 5px;
+}
+
+.gw-keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.gw-key {
+  background-color: var(--color-control);
+  color: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 8px 0;
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  touch-action: manipulation;
+  transition: background 0.2s;
+}
+
+.gw-key:hover {
+  background-color: var(--color-control-hover);
+}
+
+.gw-key.gw-key-wide {
+  flex: 1.5;
+  font-size: 0.65rem;
+}
+
+.gw-key.correct {
+  background-color: #6aaa64 !important;
+  color: #ffffff !important;
+  border-color: #6aaa64;
+}
+
+.gw-key.present {
+  background-color: #c9b458 !important;
+  color: #ffffff !important;
+  border-color: #c9b458;
+}
+
+.gw-key.absent {
+  background-color: var(--color-ai, #e74c3c) !important;
+  color: #ffffff !important;
+  border-color: #787c7e;
+}
+
+@media (max-width: 480px) {
+  .gw-tile {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+  .gw-key {
+    padding: 6px 0;
+    font-size: 0.7rem;
+  }
+  .gw-led-marquee {
+    height: 38px;
+    margin-top: -10px;
+    margin-bottom: -14px;
+  }
+  .gw-led-text {
+    font-size: 0.62rem;
+  }
+}

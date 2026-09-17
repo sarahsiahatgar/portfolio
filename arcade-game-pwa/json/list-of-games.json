@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Breakout",
+    "image": "./games/breakout/breakout.WebP",
+    "url": "./games/breakout/game-breakout.html"
+  },
+  {
+    "id": 2,
+    "name": "Dot Eater",
+    "image": "./games/dot-eater/dot-eater.WebP",
+    "url": "./games/dot-eater/game-dot-eater.html"
+  },
+  {
+    "id": 3,
+    "name": "Set Game",
+    "image": "./games/set/set.WebP",
+    "url": "./games/set/game-set.html"
+  },
+  {
+    "id": 4,
+    "name": "Tic Tac Toe",
+    "image": "./games/tictactoe/tictactoe.WebP",
+    "url": "./games/tictactoe/game-tictactoe.html"
+  },
+  {
+    "id": 5,
+    "name": "Raindrop",
+    "image": "./games/raindrop/raindrop.WebP",
+    "url": "./games/raindrop/game-raindrop.html"
+  },
+  {
+    "id": 6,
+    "name": "Gorillas",
+    "image": "./games/gorilla/gorilla.WebP",
+    "url": "./games/gorilla/game-gorilla.html"
+  },
+  {
+    "id": 7,
+    "name": "Nibble",
+    "image": "./games/nibble/nibble.WebP",
+    "url": "./games/nibble/game-nibble.html"
+  },
+  {
+    "id": 8,
+    "name": "Memory Match",
+    "image": "./games/memory-match/memory-match.WebP",
+    "url": "./games/memory-match/game-memory-match.html"
+  },
+  {
+    "id": 9,
+    "name": "Mastermind",
+    "image": "./games/mastermind/mastermind.WebP",
+    "url": "./games/mastermind/game-mastermind.html"
+  },
+  {
+    "id": 10,
+    "name": "Viking II",
+    "image": "./games/vikingII/vikingII.WebP",
+    "url": "./games/vikingII/game-vikingII.html"
+  },
+  {
+    "id": 11,
+    "name": "Connect Four",
+    "image": "./games/connect-four/connect-four.WebP",
+    "url": "./games/connect-four/game-connect-four.html"
+  },
+  {
+    "id": 12,
+    "name": "Guess Word",
+    "image": "./games/guessword/guessword.WebP",
+    "url": "./games/guessword/game-guessword.html"
+  },
+  {
+    "id": 13,
+    "name": "Minesweeper",
+    "image": "./games/minesweeper/minesweeper.WebP",
+    "url": "./games/minesweeper/game-minesweeper.html"
+  },
+  {
+    "id": 14,
+    "name": "Pond Hopper",
+    "image": "./games/pond-hopper/pond-hopper.WebP",
+    "url": "./games/pond-hopper/game-pond-hopper.html"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/memory-match/",
+  "name": "Memory Match",
+  "short_name": "Memory Match",
+  "start_url": "./game-memory-match.html",
+  "scope": "/arcade-game-pwa/games/memory-match/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-memory-match.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-memory-match.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade Games | Sara's Portfolio</title>
+  <link rel="icon" href="img/logo.WebP">
+  
+  <!-- Global & Page Stylesheets -->
+  <link rel="stylesheet" href="css/globalstyle.css">
+  <link rel="stylesheet" href="css/arcade-games.css">
+  
+  <!-- Game Stylesheets -->
+  <link rel="stylesheet" href="css/pwa-install.css">
+  <link rel="stylesheet" href="arcade-games/0-global-game.css">
+  <link rel="stylesheet" href="arcade-games/games/connect-four/css/connect-four.css">
+  <link rel="stylesheet" href="arcade-games/games/gorilla/css/gorilla.css">
+  <link rel="stylesheet" href="arcade-games/games/mastermind/css/mastermind.css">
+  <link rel="stylesheet" href="arcade-games/games/memory-match/css/memory-match.css">
+  <link rel="stylesheet" href="arcade-games/games/dot-eater/css/dot-eater.css">
+  <link rel="stylesheet" href="arcade-games/games/raindrop/css/raindrop.css">
+  <link rel="stylesheet" href="arcade-games/games/nibble/css/nibble.css">
+  <link rel="stylesheet" href="arcade-games/games/breakout/css/breakout.css">
+  <link rel="stylesheet" href="arcade-games/games/tictactoe/css/tictactoe.css">
+  <link rel="stylesheet" href="arcade-games/games/vikingII/css/vikingII.css">
+  <link rel="stylesheet" href="arcade-games/games/set/css/set.css">
+  <link rel="stylesheet" href="arcade-games/games/minesweeper/css/minesweeper.css">
+  <link rel="stylesheet" href="arcade-games/games/guessword/css/guessword.css">
+  <link rel="stylesheet" href="arcade-games/games/pond-hopper/css/pond-hopper.css">
+</head>
+
+<body class="arcade-page">
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>	
+
+  <!-- Game Quick-Navigation Bar -->
+  <div class="game-quick-nav-wrapper no-select">
+    <div class="game-quick-nav-container">
+      <div class="arcade-marquee-header">
+        <div class="arcade-led-wrap">
+          <div class="arcade-led-screen">
+            <svg class="arcade-led-border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 128" preserveAspectRatio="none">
+              <rect x="2" y="2" width="444" height="124" rx="8" ry="8" />
+            </svg>
+
+            <div class="arcade-led-content">
+              <svg class="arcade-led-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path fill="currentColor" d="M.198 18.24a.97.97 0 0 1-.194-.571v-.955s0-.571.563-.313c0 0 6.919 3.135 8.033 3.626a7.8 7.8 0 0 0 3.408.729a8.2 8.2 0 0 0 3.396-.729l8.037-3.626c.559-.258.559.313.559.313v.955a1.04 1.04 0 0 1-.198.575c-.19.258-.515.539-1.411.959c-.713.337-6.23 2.818-6.995 3.17a8 8 0 0 1-3.4.729a8.34 8.34 0 0 1-3.82-.927c-1.435-.65-5.849-2.631-6.567-2.972c-.9-.428-1.153-.654-1.411-.963m1.411-5.973l6.987-3.17a8 8 0 0 1 2.164-.634v5.707c0 .396.571.697 1.236.697s1.141-.313 1.141-.697V8.479c.778.105 1.54.313 2.263.618l6.987 3.17c.579.273 1.609.761 1.609 1.538s-1.011 1.236-1.609 1.53l-6.987 3.17a8.2 8.2 0 0 1-3.396.729a7.8 7.8 0 0 1-3.408-.729l-6.987-3.17C1.011 15.042 0 14.574 0 13.801s1.03-1.264 1.609-1.534m1.807 2.247c.77.396 1.683.396 2.453 0c.682-.396.686-1.026 0-1.419a2.7 2.7 0 0 0-2.453 0c-.68.392-.666 1.02 0 1.419M12 7.595a3.35 3.35 0 1 1 3.349-3.351v.003c0 1.849-1.5 3.348-3.349 3.348"/></svg>
+
+              <div class="arcade-led-text">
+                <span class="arcade-led-line-1">ARCADE</span>
+                <span class="arcade-led-line-2">GAMES</span>
+              </div>
+
+              <svg class="arcade-led-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path fill="currentColor" d="M.198 18.24a.97.97 0 0 1-.194-.571v-.955s0-.571.563-.313c0 0 6.919 3.135 8.033 3.626a7.8 7.8 0 0 0 3.408.729a8.2 8.2 0 0 0 3.396-.729l8.037-3.626c.559-.258.559.313.559.313v.955a1.04 1.04 0 0 1-.198.575c-.19.258-.515.539-1.411.959c-.713.337-6.23 2.818-6.995 3.17a8 8 0 0 1-3.4.729a8.34 8.34 0 0 1-3.82-.927c-1.435-.65-5.849-2.631-6.567-2.972c-.9-.428-1.153-.654-1.411-.963m1.411-5.973l6.987-3.17a8 8 0 0 1 2.164-.634v5.707c0 .396.571.697 1.236.697s1.141-.313 1.141-.697V8.479c.778.105 1.54.313 2.263.618l6.987 3.17c.579.273 1.609.761 1.609 1.538s-1.011 1.236-1.609 1.53l-6.987 3.17a8.2 8.2 0 0 1-3.396.729a7.8 7.8 0 0 1-3.408-.729l-6.987-3.17C1.011 15.042 0 14.574 0 13.801s1.03-1.264 1.609-1.534m1.807 2.247c.77.396 1.683.396 2.453 0c.682-.396.686-1.026 0-1.419a2.7 2.7 0 0 0-2.453 0c-.68.392-.666 1.02 0 1.419M12 7.595a3.35 3.35 0 1 1 3.349-3.351v.003c0 1.849-1.5 3.348-3.349 3.348"/></svg>
+            </div>
+          </div>
+
+          <div class="arcade-ticket-hanger">
+            <button type="button" class="arcade-cabinet-ticket" aria-label="Visitor ticket">
+              <span class="ticket-wrapper">
+                <span class="visitor-ticket">
+                  <span class="ticket-label">
+                    <span class="ticket-date" id="ticketDateLeft">000000</span>
+                    Visitor No.
+                  </span>
+
+                  <span class="ticket-number-wrapper">
+                    <span class="ticket-number" id="visitorCount">0000</span>
+                    <span class="ticket-date-stub" id="ticketDateRight">000000</span>
+                  </span>
+                </span>
+              </span>
+              <span class="arcade-ticket-pin" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <svg width="0" height="0" style="position: absolute;">
+            <filter id="ticket-border">
+              <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="1"/>
+              <feFlood flood-color="#a38f6c" result="color"/>
+              <feComposite in="color" in2="expanded" operator="in" result="border"/>
+              <feMerge>
+                <feMergeNode in="border"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </svg>
+        </div>
+      </div>
+
+	  <div class="game-quick-nav-links">
+        <a href="#breakout-section" class="quick-nav-link">
+		<img src="arcade-games/games/breakout/img/game-breakout.WebP" alt="breakout icon" class="game-icon" />
+		<span>Breakout</span>
+		</a>
+		<a href="#connectfour-section" class="quick-nav-link">
+		<img src="arcade-games/games/connect-four/img/game-connect-four.WebP" alt="connectfour icon" class="game-icon" />
+		<span>Connect Four</span>
+		</a>
+		<a href="#dot-eater-section" class="quick-nav-link">
+		<img src="arcade-games/games/dot-eater/img/game-dot-eater.WebP" alt="dot-eater icon" class="game-icon" />
+		<span>Dot Eater</span>
+		</a>
+		<a href="#guessword-section" class="quick-nav-link">
+		<img src="arcade-games/games/guessword/img/game-guessword.WebP" alt="guessword icon" class="game-icon" />
+		<span>GuessWord</span>
+		</a>
+		<a href="#gorilla-section" class="quick-nav-link">
+		<img src="arcade-games/games/gorilla/img/game-gorilla.WebP" alt="gorilla icon" class="game-icon" />
+		<span>Gorilla</span>
+		</a>
+		<a href="#mastermind-section" class="quick-nav-link">
+		<img src="arcade-games/games/mastermind/img/game-mastermind.WebP" alt="mastermind icon" class="game-icon" />
+		<span>Mastermind</span>
+		</a>
+		<a href="#memory-match-section" class="quick-nav-link">
+		<img src="arcade-games/games/memory-match/img/game-memory-match.WebP" alt="memory match icon" class="game-icon" />
+		<span>Memory Match</span>
+		</a>
+		<a href="#minesweeper-section" class="quick-nav-link">
+		<img src="arcade-games/games/minesweeper/img/game-minesweeper.WebP" alt="minesweeper icon" class="game-icon" />
+		<span>minesweeper</span>
+		</a>
+		<a href="#nibble-section" class="quick-nav-link">
+		<img src="arcade-games/games/nibble/img/game-nibble.WebP" alt="nibble icon" class="game-icon" />
+		<span>Nibble</span>
+		</a>
+		<a href="#pond-hopper-section" class="quick-nav-link">
+		<img src="arcade-games/games/pond-hopper/img/game-pondhopper.WebP" alt="pondhopper icon" class="game-icon" />
+		<span>Pond Hopper</span>
+		</a>
+		<a href="#raindrop-section" class="quick-nav-link">
+		<img src="arcade-games/games/raindrop/img/game-raindrop.WebP" alt="raindrop icon" class="game-icon" />
+		<span>Raindrop</span>
+		</a>
+		<a href="#set-section" class="quick-nav-link">
+		<img src="arcade-games/games/set/img/game-set.WebP" alt="set icon" class="game-icon" />
+		<span>Set Game</span>
+		</a>
+		<a href="#tictactoe-section" class="quick-nav-link">
+		<img src="arcade-games/games/tictactoe/img/game-tictactoe.WebP" alt="tictactoe icon" class="game-icon" />
+		<span>Tic-Tac-Toe</span>
+		</a>
+		<a href="#viking-section" class="quick-nav-link">
+		<img src="arcade-games/games/vikingII/img/game-vikingII.WebP" alt="vikingII icon" class="game-icon" />
+		<span>VikingII</span>
+		</a>
+      </div>
+    </div>
+  </div>
+  
+	<!-- PWA External Link Banner -->
+	<div class="pwa-external-banner">
+	  <a href="arcade-game-pwa/pwa-home.html" class="arcade-install-btn" target="_blank">
+		Open Arcade App for Offline Play
+	  </a>
+	</div>
+	
+    <!-- Games Container -->
+	<main class="games-container"">
+		<div class="game-row">
+			<breakout-card></breakout-card>
+			<nibble-card></nibble-card>
+			<pond-hopper-card></pond-hopper-card>
+		</div>
+		
+		<div class="game-row">
+		    <dot-eater-card></dot-eater-card>
+			<raindrop-card></raindrop-card>
+			<gorilla-card></gorilla-card>
+		</div>
+
+		<div class="game-row">
+			<set-game-card></set-game-card>
+			<viking-card></viking-card>
+		</div>
+
+		<div class="game-row">
+			<tictactoe-card></tictactoe-card>
+			<mastermind-card></mastermind-card>
+			<connect-four-card></connect-four-card>
+		</div>
+
+		<div class="game-row">
+			<memory-match-card></memory-match-card>
+			<minesweeper-card></minesweeper-card>
+			<guessword-card></guessword-card>
+		</div>
+	</main>
+
+  <!-- Suggestion Box -->
+  <div style="max-width: 320px; width: 95%; margin: 0 auto 100px auto;">
+    <div class="coming-soon-card" style="max-width: 100%;">
+      <div style="font-size: 1.8rem; margin-bottom: 6px;">🚧</div>
+      <h3>Work Bench is Fully Packed!</h3>
+      <p style="margin-bottom: 7px;">We're currently drowning in many project ideas! Please enjoy the existing games!</p>
+      
+      <div class="suggestion-form">
+        <input type="text" id="gameSuggestion" placeholder="Currently closed..." maxlength="50" disabled>
+        <button type="button" id="submitSuggestionBtn" disabled style="opacity: 0.6; cursor: not-allowed;">Closed</button>
+      </div>
+      <div id="suggestionMsg" class="suggestion-status" style="color: #e74c3c;">The dev desk is piled high! Check back later.</div>
+    </div>
+  </div>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initNavigation } from './js/global-navigation-and-footer.js';
+	import { initVisitorCounter } from './js/global-visitor-counter.js';
+    import { initHamburger } from './js/global-hamburger.js';
+    import { initSuggestionBox } from './js/game-suggestion.js';
+	import { initWagtailCursor } from './js/components/wagtail.js';
+    
+    import './js/game-index.js';
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      await initNavigation();
+      initSuggestionBox();
+	  initWagtailCursor();
+  	  initVisitorCounter();
+	  
+	  document.querySelectorAll('.arcade-cabinet-ticket').forEach((ticket) => {
+        ticket.addEventListener('click', () => {
+          ticket.classList.remove('is-swinging');
+          void ticket.offsetWidth;
+          ticket.classList.add('is-swinging');
+        });
+        ticket.addEventListener('animationend', () => {
+          ticket.classList.remove('is-swinging');
+        });
+      });
+    });
+	
+	function setTicketDate() {
+      const today = new Date();
+      const yy = String(today.getFullYear()).slice(-2);
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const dateString = `${yy}${mm}${dd}`;
+      document.getElementById('ticketDateLeft').textContent = dateString;
+      document.getElementById('ticketDateRight').textContent = dateString;
+    }
+    setTicketDate();
+	
+  </script>
+</body>
+</html>

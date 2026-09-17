@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/connect-four/",
+  "name": "Connect Four",
+  "short_name": "Connect Four",
+  "start_url": "./game-connect-four.html",
+  "scope": "/arcade-game-pwa/games/connect-four/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-connect-four.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-connect-four.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

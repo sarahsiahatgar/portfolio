@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/gorilla/",
+  "name": "Gorilla",
+  "short_name": "Gorilla",
+  "start_url": "./game-gorilla.html",
+  "scope": "/arcade-game-pwa/games/gorilla/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-gorilla.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-gorilla.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

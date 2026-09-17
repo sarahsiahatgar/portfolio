@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Sara's Portfolio</title>
+  <link rel="icon" href="img/logo.WebP">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/globalstyle.css">
+  <link rel="stylesheet" href="css/projects-hub.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="page-title">
+      <h1>Projects Hub</h1>
+    </div>
+    <div class="title-rule"></div>
+    <div class="title-rule-thin"></div>
+
+    <div class="note-card">
+      <p class="architecture-note">
+        A running collection of interactive web apps, AI tools, and full-stack experiments, built to explore new tech, solve real problems, and mostly because building things is fun. Have a look around, try the live builds, and dig into the code if you're curious.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Grid Container -->
+  <section class="projects-section">
+    <div class="projects-content">
+      <div class="projects-grid">
+
+        <!-- 01 — AI-Companion -->
+        <article class="project-card">
+          <div class="project-number" aria-hidden="true">❖</div>
+          <div class="project-body">
+            <div class="card-top">
+              <h3 class="project-title">AI-Companion</h3>
+              <span class="status-badge status-live">Live</span>
+            </div>
+            <div class="card-rule"></div>
+            <div class="project-meta">
+              <span class="meta-label">Built with</span>
+              <span class="meta-tech">HTML5 · CSS3 · JavaScript · AWS Lambda · AWS Nova Micro · Azure Speech · Web Audio API · Modular ES6</span>
+            </div>
+            <p class="project-desc">
+              An interactive serverless AI storytelling companion and memory analyzer. Built using vanilla JavaScript, it utilizes Amazon Nova Micro (via AWS serverless architecture) to analyze user-submitted stories, extract key narrative highlights, and generate reflective feedback. It also integrates Microsoft Azure Speech to provide real-time, text-to-speech audio playback of the AI's responses.
+            </p>
+            <div class="card-action">
+              <a href="./projects-hub/ai-companion/" class="record-link">
+                View full record <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 — Scrum Sandbox -->
+        <article class="project-card">
+          <div class="project-number" aria-hidden="true">❖</div>
+          <div class="project-body">
+            <div class="card-top">
+              <h3 class="project-title">Scrum Sandbox</h3>
+              <span class="status-badge status-live">Live</span>
+            </div>
+            <div class="card-rule"></div>
+            <div class="project-meta">
+              <span class="meta-label">Built with</span>
+              <span class="meta-tech">HTML5 · CSS3 · JavaScript · AWS Lambda · AWS DynamoDB · AWS Bedrock · AWS Nova Micro · Agile Scrum · Modular ES6</span>
+            </div>
+            <p class="project-desc">
+              An interactive Agile Scrum simulator and project management sandbox. Built with vanilla JavaScript, it features a dynamic Kanban workflow board, automated sprint health tracking, and integrated AI capabilities powered by Amazon Nova Micro (via Amazon Bedrock and AWS Lambda) to audit user stories and analyze delivery risks. Users can choose from pre-built exemplary project templates or persist their custom backlogs to AWS DynamoDB via AWS API Gateway.
+            </p>
+            <div class="card-action">
+              <a href="../projects-hub/scrum-sandbox/" class="record-link">
+                View full record <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 — Music Lab -->
+        <article class="project-card">
+          <div class="project-number" aria-hidden="true">❖</div>
+          <div class="project-body">
+            <div class="card-top">
+              <h3 class="project-title">Music Lab</h3>
+              <span class="status-badge status-beta">Beta</span>
+            </div>
+            <div class="card-rule"></div>
+            <div class="project-meta">
+              <span class="meta-label">Built with</span>
+              <span class="meta-tech">HTML5 · CSS3 · JavaScript · Web Audio API · abcjs · jsPDF · svg2pdf.js · HTML5 Canvas · Modular ES6</span>
+            </div>
+            <p class="project-desc">
+              An interactive web-based music composition and playback studio for Cello and Piano. Built with vanilla JavaScript and a modular architecture, it lets users write, transpose, and play back scores in real time using abcjs and the Web Audio API. It features dynamic measure tracking, note-pads with custom durations and accidentals, live canvas frequency visualizations, classical presets, and tools to export compositions as high-resolution PDFs or WAV audio files.
+            </p>
+            <div class="card-action">
+              <a href="../projects-hub/music-lab/" class="record-link">
+                View full record <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 — Kitchen Byte -->
+        <article class="project-card">
+          <div class="project-number" aria-hidden="true">❖</div>
+          <div class="project-body">
+            <div class="card-top">
+              <h3 class="project-title">Kitchen Byte</h3>
+              <span class="status-badge status-upcoming">In Development</span>
+            </div>
+            <div class="card-rule"></div>
+            <div class="project-meta">
+              <span class="meta-label">Built with</span>
+              <span class="meta-tech">HTML5 · CSS3 · JavaScript · Google Gemini API · Google Places API · Modular ES6</span>
+            </div>
+            <p class="project-desc">
+              An interactive AI-powered global meal-prep agent and zero-waste menu planner. Built using vanilla JavaScript and modular ES6 architecture, it coordinates the Google Gemini API to generate tailored multi-day recipes, calorie breakdowns, and aisle-grouped grocery lists based on custom dietary preferences, household sizes, and fitness goals. It also integrates the Google Places API to look up nearby supermarket addresses and operating hours using postal codes, and features drag-and-drop or tap-to-select meal swapping with full printable recipe guides.
+            </p>
+            <div class="card-action">
+              <button class="record-link disabled-link" disabled>
+                Not yet catalogued
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="backToTopBtn" aria-label="Back to top">&uarr;</button>
+
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initNavigation } from './js/global-navigation-and-footer.js';
+    import { initHamburger } from './js/global-hamburger.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await initNavigation();
+    });
+  </script>
+</body>
+</html>

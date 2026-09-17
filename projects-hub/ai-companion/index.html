@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Companion | Sara's Portfolio</title>
+  <link rel="icon" href="/img/logo.WebP">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+
+  <!-- Updated Stylesheets Paths -->
+  <link rel="stylesheet" href="../../css/globalstyle.css">
+  <link rel="stylesheet" href="ai-companion.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <span class="eyebrow">Project</span>
+    <h1>The Memory & Story AI-Companion</h1>
+    <div class="title-rule"></div>
+    <div class="title-rule-thin"></div>
+  </section>
+
+  <!-- Project Introduction -->
+  <div class="note-card">
+    <span class="info-icon" tabindex="0" onclick="this.classList.toggle('active')">i
+      <span class="info-tooltip">
+        This project utilizes Amazon Nova Micro to analyze user-submitted stories and generate feedback highlighting key narrative moments. Additionally, it incorporates Microsoft Azure Speech to provide text-to-speech audio playback of the generated feedback.
+      </span>
+    </span>
+    <p>
+      Welcome to my serverless AI storytelling assistant! Whether you need a little mental boost, a touch of positivity, or just want to share a cherished memory, this tool is for you. Drop in a story or experience, and my cloud-backed application will instantly reflect on it with warmth and highlight its two core takeaways.
+    </p>
+  </div>
+
+  <!-- Story Companion Widget -->
+  <main class="widget-card">
+    <h3>Share Your Story or Memory</h3>
+
+    <div style="display:none; visibility:hidden;" aria-hidden="true">
+        <label for="companyField">Company</label>
+        <input type="text" id="companyField" name="company" tabindex="-1" autocomplete="off">
+    </div>
+
+    <label for="docTitle">Story Title / Topic</label>
+    <input type="text" id="docTitle" maxlength="100" placeholder="e.g. The Great Watermelon Chase" required />
+
+    <label for="docText">Your Memory or Experience</label>
+    <div class="textarea-wrapper">
+      <textarea id="docText" maxlength="4000" oninput="updateCharCount()" placeholder="I was around four years old, we were having a big family and friends picnic on a hill. Just as we were about to cut into a juicy watermelon, it slipped, fell, and started rolling fast down the hill. I remember all the kids and some grown ups were chasing after the runaway watermelon down the hill, everyone were laughing as we were chasing after it ..." required></textarea>
+      <span id="charCount" class="char-counter">0/4000</span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+		<label id="captchaLabel" for="captchaAnswer">Security Check: What is ?</label>
+		<div style="display: flex; align-items: center; gap: 10px;">
+			<input type="number" id="captchaAnswer" class="captcha-input" placeholder="Answer" required />
+			<button type="button" id="refreshCaptchaBtn" class="audio-icon-btn" onclick="initAiCompanionForm()" aria-label="Get new math problem" title="Get new math problem">↻</button>
+		</div>
+	</div>
+
+    <div class="send-row">
+      <button type="button" id="analyzeBtn" class="stamp-send" onclick="analyzeStory()">Reflect & Analyze</button>
+    </div>
+
+    <div id="resultOutput" aria-live="polite">
+      <p class="placeholder-text">The AI's warm response and key highlights will appear here...</p>
+    </div>
+  </main>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+	<script type="module">
+		import { analyzeStory, toggleAudioPlayback, updateCharCount, initAiCompanionForm } from './ai-companion.js';
+		import { initHamburger } from '../../js/global-hamburger.js';
+		import { initNavigation } from '../../js/global-navigation-and-footer.js';
+
+		window.analyzeStory = analyzeStory;
+		window.toggleAudioPlayback = toggleAudioPlayback;
+		window.updateCharCount = updateCharCount;
+		window.initAiCompanionForm = initAiCompanionForm;
+		
+		document.addEventListener('DOMContentLoaded', async () => {
+		  await initNavigation();
+		  await initAiCompanionForm();
+		});
+	</script>
+</body>
+</html>

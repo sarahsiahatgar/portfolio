@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/minesweeper/",
+  "name": "Minesweeper",
+  "short_name": "Minesweeper",
+  "start_url": "./game-minesweeper.html",
+  "scope": "/arcade-game-pwa/games/minesweeper/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-minesweeper.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-minesweeper.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

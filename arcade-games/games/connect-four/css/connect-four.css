@@ -1,0 +1,353 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+connect-four-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+connect-four-card .game-card {
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+connect-four-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 520px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 4px;
+}
+
+connect-four-card .c4-game-status {
+  min-height: 0;
+  margin: 0 0 4px 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+@keyframes slowBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.c4-blink-text {
+  animation: slowBlink 2.5s infinite ease-in-out;
+}
+
+.c4-neon-red {
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.c4-game-status-row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin: 0;
+}
+
+.c4-offline-badge {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.c4-offline-badge.hidden {
+  display: none;
+}
+
+.c4-options-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.c4-option-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  color: var(--color-accent, #d1db9e);
+}
+
+.c4-select {
+  background: var(--color-control);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #F0E6CF;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.c4-select:focus {
+  outline: none;
+  border-color: var(--color-accent, #d1db9e);
+}
+
+.c4-board-container {
+  position: relative;
+  display: inline-block;
+}
+
+.c4-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 24, 18, 0.85);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  text-align: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: auto;
+}
+
+.c4-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Clean, modern grid board */
+.c4-board {
+  display: grid;
+  grid-template-columns: repeat(7, 35px);
+  grid-template-rows: repeat(6, 35px);
+  gap: 6px;
+  background-color: var(--bg-dark);
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Simple cutout cell */
+.c4-cell {
+  width: 35px;
+  height: 35px;
+  background-color: var(--bg-card-body);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid var(--color-control);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  touch-action: manipulation;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@keyframes dropCoin {
+  0% {
+    transform: translateY(-160px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Base coin highlight & slight edge shadow */
+.c4-cell.player,
+.c4-cell.ai {
+  border: none;
+  box-shadow: 
+    inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Smooth Yellow Coin */
+.c4-cell.player.player-yellow,
+.c4-cell.ai.ai-yellow {
+  background: radial-gradient(circle at 35% 30%, #fff176 0%, #ffd54f 45%, #f57f17 100%);
+}
+
+/* Smooth Red Coin */
+.c4-cell.player.player-red,
+.c4-cell.ai.ai-red {
+  background: radial-gradient(circle at 35% 30%, #ff8a80 0%, #ff5252 45%, #b71c1c 100%);
+}
+
+.c4-cell.dropping {
+  animation: dropCoin 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.c4-action-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.c4-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.c4-items-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.c4-winning-legend {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.c4-legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.c4-token-row {
+  display: flex;
+  gap: 2px;
+}
+
+.c4-token-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.c4-token-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 12px);
+  grid-template-rows: repeat(4, 12px);
+  gap: 2px;
+}
+
+.c4-legend-token {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 35% 30%, #fff176 0%, #ffd54f 60%, #f57f17 100%);
+  border-radius: 50%;
+}
+
+.c4-pos-1 { grid-column: 1; grid-row: 1; }
+.c4-pos-2 { grid-column: 2; grid-row: 2; }
+.c4-pos-3 { grid-column: 3; grid-row: 3; }
+.c4-pos-4 { grid-column: 4; grid-row: 4; }
+
+.c4-legend-label {
+  opacity: 0.8;
+}
+
+connect-four-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+connect-four-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .c4-board {
+    grid-template-columns: repeat(7, minmax(32px, 40px));
+    grid-template-rows: repeat(6, minmax(32px, 40px));
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .c4-cell {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .c4-board {
+    grid-template-columns: repeat(7, 30px);
+    grid-template-rows: repeat(6, 30px);
+  }    
+}

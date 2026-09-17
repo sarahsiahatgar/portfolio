@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="Play fun retro arcade games built directly into my web developer portfolio.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Arcade PWA">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade Games</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./img/pwa-logo.WebP" type="image/WebP">
+  <link rel="apple-touch-icon" href="./img/pwa-logo.WebP">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/pwa-global.css">
+  <link rel="stylesheet" href="css/pwa-home.css">
+  <link rel="stylesheet" href="css/pwa-guide-button.css">
+  
+</head>
+
+<body class="arcade-page">
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>	
+  
+  <!-- Page Title -->
+  <div class="page-title">
+    <div class="title-spacer"></div>
+
+    <!-- LED Marquee Screen -->
+    <div class="arcade-led-wrap">
+      <div class="arcade-led-screen">
+        <svg class="arcade-led-border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 128" preserveAspectRatio="none">
+          <rect x="2" y="2" width="444" height="124" rx="8" ry="8" />
+        </svg>
+
+        <div class="arcade-led-content">
+          <svg class="arcade-led-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path fill="currentColor" d="M.198 18.24a.97.97 0 0 1-.194-.571v-.955s0-.571.563-.313c0 0 6.919 3.135 8.033 3.626a7.8 7.8 0 0 0 3.408.729a8.2 8.2 0 0 0 3.396-.729l8.037-3.626c.559-.258.559.313.559.313v.955a1.04 1.04 0 0 1-.198.575c-.19.258-.515.539-1.411.959c-.713.337-6.23 2.818-6.995 3.17a8 8 0 0 1-3.4.729a8.34 8.34 0 0 1-3.82-.927c-1.435-.65-5.849-2.631-6.567-2.972c-.9-.428-1.153-.654-1.411-.963m1.411-5.973l6.987-3.17a8 8 0 0 1 2.164-.634v5.707c0 .396.571.697 1.236.697s1.141-.313 1.141-.697V8.479c.778.105 1.54.313 2.263.618l6.987 3.17c.579.273 1.609.761 1.609 1.538s-1.011 1.236-1.609 1.53l-6.987 3.17a8.2 8.2 0 0 1-3.396.729a7.8 7.8 0 0 1-3.408-.729l-6.987-3.17C1.011 15.042 0 14.574 0 13.801s1.03-1.264 1.609-1.534m1.807 2.247c.77.396 1.683.396 2.453 0c.682-.396.686-1.026 0-1.419a2.7 2.7 0 0 0-2.453 0c-.68.392-.666 1.02 0 1.419M12 7.595a3.35 3.35 0 1 1 3.349-3.351v.003c0 1.849-1.5 3.348-3.349 3.348"/></svg>
+
+          <div class="arcade-led-text">
+            <span class="arcade-led-line-1">ARCADE</span>
+            <span class="arcade-led-line-2">GAMES</span>
+          </div>
+
+          <svg class="arcade-led-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30" height="30"><path fill="currentColor" d="M.198 18.24a.97.97 0 0 1-.194-.571v-.955s0-.571.563-.313c0 0 6.919 3.135 8.033 3.626a7.8 7.8 0 0 0 3.408.729a8.2 8.2 0 0 0 3.396-.729l8.037-3.626c.559-.258.559.313.559.313v.955a1.04 1.04 0 0 1-.198.575c-.19.258-.515.539-1.411.959c-.713.337-6.23 2.818-6.995 3.17a8 8 0 0 1-3.4.729a8.34 8.34 0 0 1-3.82-.927c-1.435-.65-5.849-2.631-6.567-2.972c-.9-.428-1.153-.654-1.411-.963m1.411-5.973l6.987-3.17a8 8 0 0 1 2.164-.634v5.707c0 .396.571.697 1.236.697s1.141-.313 1.141-.697V8.479c.778.105 1.54.313 2.263.618l6.987 3.17c.579.273 1.609.761 1.609 1.538s-1.011 1.236-1.609 1.53l-6.987 3.17a8.2 8.2 0 0 1-3.396.729a7.8 7.8 0 0 1-3.408-.729l-6.987-3.17C1.011 15.042 0 14.574 0 13.801s1.03-1.264 1.609-1.534m1.807 2.247c.77.396 1.683.396 2.453 0c.682-.396.686-1.026 0-1.419a2.7 2.7 0 0 0-2.453 0c-.68.392-.666 1.02 0 1.419M12 7.595a3.35 3.35 0 1 1 3.349-3.351v.003c0 1.849-1.5 3.348-3.349 3.348"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Install Guide Button -->
+    <button id="openGuideBtn" class="arcade-install-btn" aria-label="How to Install App" title="How to Install App">
+      <svg class="install-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span class="btn-text">How to Install</span>
+    </button>
+  </div>
+
+  <!-- PWA Instructions Modal -->
+  <div id="installGuideModal" class="pwa-guide-modal" style="display: none;">
+    <div class="pwa-guide-content arcade-modal-box">
+	  <div class="pwa-guide-scroll-area">
+		<div class="guide-modal-header">
+		  <h3>How to install the App</h3>
+		  <span id="closeGuideModal" class="close-guide">&times;</span>
+		</div>
+		<div class="guide-steps">
+        
+			<!-- iOS Section -->
+			<div class="guide-section">
+			  <p class="guide-platform">
+				<svg class="guide-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.95 5.35c.57-.69 1.05-1.65.93-2.61-.92.04-2.03.62-2.68 1.39-.53.61-1 1.58-.87 2.53 1.03.08 2.05-.53 2.62-1.31z"/></svg>
+				<strong>On iOS (Safari/Chrome):</strong>
+			  </p>
+			  <p>1. Tap the <strong>Share</strong> button 
+				<svg style="display: inline-block; vertical-align: middle; margin: 0 2px;" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> 
+				at the bottom </br>(<strong>Chrome</strong> on top).
+			  </p>
+			  <p>2. Tap <strong>View More</strong>.</p>
+			  <p>3. Find and tap <strong>"Add to Home Screen"</strong> 
+				<svg style="display: inline-block; vertical-align: middle; margin: 0 2px;" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>.
+			  </p>
+			</div>
+
+			<!-- Android Section -->
+			<div class="guide-section">
+			  <p class="guide-platform">
+				<svg class="guide-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.523 15.341c-.551 0-1 .449-1 1s.449 1 1 1 1-.449 1-1-.449-1-1-1m-11.046 0c-.551 0-1 .449-1 1s.449 1 1 1 1-.449 1-1-.449-1-1-1m11.858-5.085l1.832-3.174a.498.498 0 0 0-.183-.683.498.498 0 0 0-.683.183l-1.859 3.22a11.16 11.16 0 0 0-9.436 0L5.352 6.592a.498.498 0 0 0-.683-.183.498.498 0 0 0-.183.683l1.832 3.174C3.96 11.838 2.5 13.974 2.5 16.5h19c0-2.526-1.46-4.662-3.165-6.244"/></svg>
+				<strong>On Android (Chrome):</strong>
+			  </p>
+			  <p>1. Tap the <strong>three-dot menu</strong> ⋮ in the top right.</p>
+			  <p>2. Tap <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</p>
+			</div>
+
+			<!-- Desktop Section -->
+			<div class="guide-section">
+			  <p class="guide-platform">
+				<svg class="guide-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+				<strong>On Desktop:</strong>
+			  </p>
+			  <p style="margin-top: 6px;"><strong>Google Chrome:</strong></p>
+			  <div style="padding-left: 18px;">
+				<p>1. Click the <strong>three-dot menu</strong> ⋮ in the top right.</p>
+				<p>2. Select <strong>Cast, save, and share</strong> &rarr;</p>
+				<p>3. Select <strong>Install page as app</strong>.</p>
+			  </div>
+
+			  <p style="margin-top: 12px;"><strong>Microsoft Edge:</strong></p>
+			  <div style="padding-left: 18px;">
+				<p>1. Click the <strong>three-dot menu</strong> ⋯ in the top right.</p>
+				<p>2. Select <strong>More tools</strong> &rarr;</p>
+				<p>3. Select <strong>Apps</strong> &rarr;</p>
+				<p>4. Select <strong>Install this site as an app</strong>.</p>
+			  </div>
+			</div>
+
+			<!-- Tip -->
+			<div class="guide-tip">
+			  <svg class="tip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill="currentColor" d="M21.375 8.625L20 8l1.375-.625L22 6l.625 1.375L24 8l-1.375.625L22 10l-.625-1.375ZM18.05 3.95L16 3l2.05-.95L19 0l.95 2.05L22 3l-2.05.95L19 6l-.95-2.05ZM9 22q-.825 0-1.413-.588T7 20h4q0 .825-.588 1.413T9 22Zm-3-3q-.425 0-.713-.288T5 18q0-.425.288-.713T6 17h6q.425 0 .713.288T13 18q0 .425-.288.713T12 19H6Zm-.75-3q-1.725-1.025-2.738-2.75T1.5 9.5q0-3.125 2.188-5.313T9 2q3.125 0 5.313 2.188T16.5 9.5q0 2.025-1.012 3.75T12.75 16h-7.5Z"/></svg>
+			  <span>Have a favorite game? You can use these same steps on that game's own page to add just that game to your home screen as its own app.</span>
+			</div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Games Grid Container -->
+  <main class="games-container">
+    <div id="gamesGrid" class="games-grid">
+    </div>
+  </main>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./js/insert-coin.js"></script>
+  <script>
+    const modal = document.getElementById('installGuideModal');
+    const openBtn = document.getElementById('openGuideBtn');
+    const closeBtn = document.getElementById('closeGuideModal');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+</body>
+</html>

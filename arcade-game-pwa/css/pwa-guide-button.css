@@ -1,0 +1,170 @@
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+.pwa-guide-modal,
+.pwa-guide-modal * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+
+.pwa-guide-modal {
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pwa-guide-content.arcade-modal-box {
+  background-color: #353c2a;
+  color: #c3cbab;
+  margin: auto;
+  padding: 18px;
+  border: 2px solid #12150f;
+  width: 85%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: inset 0 -4px 0 #2e3c27, inset 0 2px 0 #606b51, 0 12px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pwa-guide-content.arcade-modal-box::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid rgba(181, 190, 138, 0.35);
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pwa-guide-scroll-area {
+  position: relative;
+  z-index: 2;
+  padding: 16px 20px 20px 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+.guide-modal-header {
+  position: static;
+  top: 0;
+  background-color: #353c2a;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed rgba(181, 190, 138, 0.35);
+}
+
+.guide-modal-header h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  color: #b5be8a;
+  font-size: 1rem;
+}
+
+.close-guide {
+  color: #b5be8a;
+  position: static;
+  z-index: 30;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(53, 60, 42, 0.9);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.close-guide:hover {
+  color: #fff;
+  background: rgba(73, 82, 60, 1);
+}
+
+.guide-section {
+  border: 1px dashed rgba(181, 190, 138, 0.35);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.guide-section:last-child {
+  margin-bottom: 0;
+}
+
+.guide-platform {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #b5be8a;
+  font-size: 0.95rem;
+}
+
+.guide-icon {
+  fill: #b5be8a;
+flex-shrink: 0;
+}
+
+.guide-steps p {
+  margin: 6px 0;
+  padding-left: 26px;
+  color: #c3cbab;
+}
+
+.guide-steps p strong {
+  color: #c3cbab;
+  font-weight: 600;
+}
+
+.guide-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px dashed rgba(181, 190, 138, 0.35);
+  border-radius: 10px;
+  color: #c3cbab;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.guide-tip .tip-icon {
+  flex-shrink: 0;
+  fill: #b5be8a;
+  margin-top: 1px;
+}

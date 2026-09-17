@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link rel="icon" href="./img/pwa-logo.WebP">
+  <link rel="apple-touch-icon" href="./img/pwa-logo.WebP">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/pwa-global.css">
+  <link rel="stylesheet" href="./css/pwa-contact-me.css">
+  <link rel="icon" href="./img/pwa-logo.WebP" type="image/WebP">
+  <link rel="stylesheet" href="css/pwa-oneko.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>	
+
+  <!-- Main Content -->
+  <main class="contact-card">
+
+	<div class="contact-header">
+		<div class="contact-titles">
+			<h1>Contact Formeowlar</h1>
+			<p>Hi! I’m Sara and a computer scientist and creator. This arcade PWA is part of my larger <a href="YOUR_PORTFOLIO_LINK_HERE" target="_blank" rel="noopener noreferrer">portfolio project</a>, built to bring games right to your devices. Whether you want to talk tech, share feedback, or explore more of my work, feel free to reach out!</p>
+		</div>
+		
+		<video autoplay muted loop playsinline class="contact-media">
+			<source src="./img/pwa-contact-video.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+
+    <div class="contact-form">
+		<div style="display:none; visibility:hidden;" aria-hidden="true">
+			<label for="website_url">Leave this field blank</label>
+			<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+		</div>
+		<label for="senderEmail">Your Name * or E-Mail</label>
+		<input type="text" id="senderEmail" maxlength="100" placeholder="E-Mail is optional if you want me to reply!" required />
+
+		<label for="docTitle">Subject</label>
+		<input type="text" id="docTitle" maxlength="100" placeholder="It's okay if you can't think of a subject right now.." />
+		  
+		<label for="docText">Message *</label>
+		<div class="textarea-wrapper">
+			<textarea id="docText" maxlength="4000" oninput="updateCharCount()" placeholder="Hmmm...  " required></textarea>
+			<span id="charCount" class="char-counter">0/4000</span>
+		</div>
+
+		<div style="margin-bottom: 20px;">
+			<label id="captchaLabel" for="captchaAnswer">Security Check: What is ?</label>
+			<input type="number" id="captchaAnswer" placeholder="Answer" required style="width: 150px; padding: 12px 15px; background-color: #3b4432; border: 1px solid #4d5843; border-radius: 8px; color: #ffffff; font-size: 1rem; outline: none;" />
+		</div>
+		  
+		<button type="button" id="sendBtn" onclick="sendContactMessage()">Send</button>      
+		
+		<!-- ONEKO COLOR -->
+			<div class="cat-color-picker">
+			  <label for="catColorSelect">Cat Color:</label>
+			  <select id="catColorSelect">
+				<option value="gray" selected>Gray</option>
+				<option value="default">White</option>
+				<option value="yellow">Yellow</option>
+				<option value="orange">Orange</option>
+				<option value="brown">Brown</option>
+				<option value="pink">Pink</option>
+				<option value="green">Green</option>
+				<option value="blue">Blue</option>
+				<option value="black">Black</option>
+				<option value="disabled">Hide Cat</option>
+			  </select>
+			</div>
+		
+		<div id="formStatus" style="margin-top: 15px; font-weight: 600; font-size: 0.95rem;"></div>
+	</div>
+  </main>
+  
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+	<script type="module">
+		import { initNavigation } from './js/pwa-global-navigation-and-footer.js';
+		import { initHamburger } from './js/pwa-global-hamburger.js';
+		import { initContactForm, updateCharCount, sendContactMessage } from './js/pwa-contact-me.js';
+		
+		window.updateCharCount = updateCharCount;
+        window.sendContactMessage = sendContactMessage;
+		
+		document.addEventListener('DOMContentLoaded', async () => {
+		  await initNavigation();
+		  initHamburger();
+		  initContactForm();
+		});
+		document.addEventListener("touchmove", function (event) {
+		  if (event.touches.length > 0) {
+			const touch = event.touches[0];
+			
+			document.dispatchEvent(
+			  new MouseEvent("mousemove", {
+				clientX: touch.clientX,
+				clientY: touch.clientY,
+			  })
+			);
+		  }
+		}, { passive: true });
+	</script>
+<script src="./js/pwa-oneko.js" defer></script>
+</body>
+</html>

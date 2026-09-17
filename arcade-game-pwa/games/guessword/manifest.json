@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/guessword/",
+  "name": "Guess Word",
+  "short_name": "Guess Word",
+  "start_url": "./game-guessword.html",
+  "scope": "/arcade-game-pwa/games/guessword/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-guessword.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-guessword.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

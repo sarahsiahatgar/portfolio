@@ -1,0 +1,362 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 20px 20px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero .eyebrow {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  color: var(--ink-dev, #5c5f3f);
+  margin-bottom: 16px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 2.3rem;
+  letter-spacing: -0.5px;
+  color: #212918;
+  margin-bottom: 12px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.title-rule {
+  width: 92px;
+  height: 3px;
+  background-color: #212918;
+  margin: 0 auto 6px;
+}
+
+.title-rule-thin {
+  width: 92px;
+  height: 1px;
+  background-color: var(--rule-line, rgba(43, 51, 31, 0.3));
+  margin: 0 auto 0;
+}
+
+/* ==========================================================================
+   PROFILE CARD
+   ========================================================================== */
+.profile-card {
+  background-color: var(--parchment, #efe8d3);
+  border: 1px solid var(--parchment-edge, #ddd3ae);
+  border-radius: 4px;
+  padding: 40px;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 20px 44px;
+  box-shadow: 0 14px 30px rgba(43, 51, 31, 0.18);
+  position: relative;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 9px; left: 9px; right: 9px; bottom: 9px;
+  border: 1px solid rgba(43, 51, 31, 0.15);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.profile-top {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.profile-top p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #2d3620;
+  margin: 0;
+  flex: 1;
+}
+
+.profile-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ink-live, #8a3b2b);
+  box-shadow: 0 4px 12px rgba(43, 51, 31, 0.3);
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.card-rule {
+  height: 1px;
+  background-color: rgba(43, 51, 31, 0.22);
+  margin: 0 0 22px;
+}
+
+.profile-card p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #2d3620;
+  margin-bottom: 18px;
+}
+
+.profile-card p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-card em {
+  font-style: italic;
+}
+
+/* ==========================================================================
+   SECTION HEADINGS
+   ========================================================================== */
+.section-block {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 20px 44px;
+}
+
+.section-block h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #212918;
+  margin-bottom: 4px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.section-block h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 1px;
+  background-color: var(--rule-line, rgba(43, 51, 31, 0.3));
+  margin: 10px 0 22px;
+}
+
+/* ==========================================================================
+   SKILL CARDS
+   ========================================================================== */
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.skill-card {
+  background-color: var(--parchment, #efe8d3);
+  border: 1px solid var(--parchment-edge, #ddd3ae);
+  border-radius: 4px;
+  padding: 22px 24px;
+  box-shadow: 0 14px 30px rgba(43, 51, 31, 0.18);
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 9px; left: 9px; right: 9px; bottom: 9px;
+  border: 1px solid rgba(43, 51, 31, 0.15);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.skill-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-mark {
+  font-size: 1.1rem;
+  color: var(--ink-live, #8a3b2b);
+  line-height: 1;
+}
+
+.skill-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #1e2319;
+  margin: 0;
+}
+
+.skill-rule {
+  border-bottom: 1px dashed var(--rule-line, rgba(43, 51, 31, 0.3));
+  margin: 14px 0 16px;
+}
+
+.skill-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-card li {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #2d3620;
+  padding-left: 16px;
+  position: relative;
+}
+
+.skill-card li::before {
+  content: ".";
+  position: absolute;
+  left: 0;
+  top: -0.35em;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--ink-live, #8a3b2b);
+  line-height: 1;
+}
+
+/* ==========================================================================
+   HOBBY STAMPS
+   ========================================================================== */
+
+.hobby-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 16px;
+}
+
+.hobby-stamp {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink-live, #8a3b2b);
+
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  padding: 9px 15px;
+
+  background: rgba(138, 59, 43, 0.05);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  line-height: 1;
+}
+
+.hobby-stamp svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.6;
+  flex-shrink: 0;
+}
+
+.hobby-stamp svg {
+  stroke: currentColor;
+}
+
+.hobby-stamp:nth-child(3n+1) {
+  transform: rotate(-2.5deg);
+}
+
+.hobby-stamp:nth-child(3n+2) {
+  transform: rotate(2deg);
+  color: var(--ink-beta, #8a6a2b);
+  background: rgba(138, 106, 43, 0.05);
+}
+
+.hobby-stamp:nth-child(3n) {
+  transform: rotate(-1.5deg);
+  color: var(--ink-dev, #5c5f3f);
+  background: rgba(92, 95, 63, 0.05);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero {
+    margin: 10px 15px 30px;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .profile-card {
+    padding: 25px 20px;
+    width: 95%;
+    margin: 0 10px 30px;
+  }
+
+  .profile-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .profile-photo {
+    order: -1;
+    width: 100px;
+    height: 100px;
+  }
+
+  .section-block {
+    width: 95%;
+    margin: 0 10px 30px;
+  }
+
+  .skills-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .profile-photo {
+    width: 85px;
+    height: 85px;
+  }
+}

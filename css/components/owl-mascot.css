@@ -1,0 +1,277 @@
+/* owl-mascot.css
+   Fully self-contained — its own color tokens, its own keyframes — so this
+   component can be dropped onto any page without depending on that page's
+   own CSS variables being present.
+
+   Positioning (left/top) is set by the component's own JS (see
+   owl-mascot.js's _positionAtCorner), relative to its offsetParent — that
+   parent needs `position: relative` for this to anchor correctly. */
+
+owl-mascot {
+  --owl-crown: #6f5942;
+  --owl-crown-dark: #5a4735;
+  --owl-body: #80664b;
+  --owl-wing: #5f4936;
+  --owl-face: #ead9bb;
+  --owl-belly: #d9c3a1;
+  --owl-mark: #9d8060;
+  --owl-beak: #d99b2e;
+  --owl-beak-dark: #b87820;
+  --owl-eye: #f7f4ea;
+  --owl-pupil: #30261d;
+  --owl-feet: #d89424;
+  --owl-parchment: #efe8d3;
+  --owl-ink: #2b331f;
+  --owl-seal: #8a3b2b;
+
+  display: block;
+  position: absolute;
+  width: 140px;
+  height: 132px;
+  transform-origin: center center;
+  z-index: 5;
+  cursor: pointer; /* it perches at a corner now, clear of the button, so it's safe to make it interactive */
+  opacity: 0;
+}
+
+.owl-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+owl-mascot .owl-wing { transform-box: fill-box; }
+owl-mascot .owl-wing-left  { transform-origin: 90% 20%; animation: owlWingIdleL 6.5s ease-in-out infinite 1.2s; }
+owl-mascot .owl-wing-right { transform-origin: 10% 20%; animation: owlWingIdleR 6.5s ease-in-out infinite 2s; }
+
+/* ---------- Wing crossfade ----------
+   Two separate wing shapes live inside .owl-wing-left/-right: a small
+   tucked wing (visible at rest) and a big feathered spread wing (visible
+   only while actively flying or reacting to a tap). Which one shows is
+   controlled entirely below — the idle rotation on .owl-wing-left/-right
+   above is what gives the tucked wing its resting shuffle. */
+
+owl-mascot .wing-big,
+owl-mascot .wing-simple { transform-box: fill-box; }
+
+owl-mascot .wing-big-left  { transform-origin: 100% 40%; opacity: 0; transform: rotate(-70deg); }
+owl-mascot .wing-big-right { transform-origin: 0% 40%;   opacity: 0; transform: rotate(70deg); }
+
+owl-mascot .wing-simple-left,
+owl-mascot .wing-simple-right { opacity: 0; }
+
+owl-mascot .owl-head {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: owlHeadTurn 7.5s ease-in-out infinite 1s;
+}
+
+owl-mascot .owl-eyelid {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: owlBlink 4.6s ease-in-out infinite 1.5s backwards;
+}
+owl-mascot .owl-eyelid-r { animation-delay: 1.56s; }
+
+owl-mascot .owl-envelope {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+/* ---------- Idle loop ---------- */
+
+@keyframes owlBlink {
+  0%, 95%, 100% { transform: scaleY(0.05); }
+  97% { transform: scaleY(1); }
+}
+
+@keyframes owlHeadTurn {
+  0%, 100% { transform: rotate(0deg); }
+  22% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  74% { transform: rotate(8deg); }
+  90% { transform: rotate(0deg); }
+}
+
+@keyframes owlWingIdleL {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  85% { transform: rotate(-16deg); }
+  92% { transform: rotate(3deg); }
+}
+@keyframes owlWingIdleR {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  85% { transform: rotate(16deg); }
+  92% { transform: rotate(-3deg); }
+}
+
+/* ---------- Arrival (page load, flying home after send, or after a
+   rapid-tap relocate) — big wing spreads and swings a few times on the
+   way in, then folds and fades right as the tucked wing takes over for
+   resting. This ".arriving" class stays attached through the whole
+   resting period afterward too (it's only removed when a flight/tap
+   phase starts), which is what keeps the idle wing-shuffle looping
+   correctly below rather than stopping once the landing finishes. ---------- */
+
+owl-mascot.arriving {
+  animation: owlArrive 1s cubic-bezier(0.25, 0.9, 0.4, 1) forwards;
+}
+@keyframes owlArrive {
+  0%   { transform: translate(var(--fly-dx, 0px), var(--fly-dy, 0px)) rotate(15deg) scale(0.85); opacity: 0; }
+  60%  { transform: translate(calc(var(--fly-dx, 0px) * 0.04), calc(var(--fly-dy, 0px) * 0.04)) rotate(-4deg) scale(1.05); opacity: 1; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+owl-mascot.arriving .wing-big-left  { animation: wingBigEnterL 1s cubic-bezier(0.25, 0.9, 0.4, 1); }
+owl-mascot.arriving .wing-big-right { animation: wingBigEnterR 1s cubic-bezier(0.25, 0.9, 0.4, 1); }
+owl-mascot.arriving .wing-simple-left {
+  opacity: 1;
+  animation: wingSimpleEnterL 1s cubic-bezier(0.25, 0.9, 0.4, 1), owlWingIdleL 6.5s ease-in-out infinite 1.1s;
+}
+owl-mascot.arriving .wing-simple-right {
+  opacity: 1;
+  animation: wingSimpleEnterR 1s cubic-bezier(0.25, 0.9, 0.4, 1), owlWingIdleR 6.5s ease-in-out infinite 1.9s;
+}
+
+@keyframes wingBigEnterL {
+  0%   { transform: rotate(-15deg); opacity: 1; }
+  30%  { transform: rotate(-42deg); opacity: 1; }
+  60%  { transform: rotate(-18deg); opacity: 1; }
+  85%  { transform: rotate(-45deg); opacity: 1; }
+  100% { transform: rotate(-70deg); opacity: 0; }
+}
+@keyframes wingBigEnterR {
+  0%   { transform: rotate(15deg); opacity: 1; }
+  30%  { transform: rotate(42deg); opacity: 1; }
+  60%  { transform: rotate(18deg); opacity: 1; }
+  85%  { transform: rotate(45deg); opacity: 1; }
+  100% { transform: rotate(70deg); opacity: 0; }
+}
+@keyframes wingSimpleEnterL {
+  0%, 85% { opacity: 0; }
+  100%    { opacity: 1; }
+}
+@keyframes wingSimpleEnterR {
+  0%, 85% { opacity: 0; }
+  100%    { opacity: 1; }
+}
+
+/* ---------- Tap reaction: a quick startled flap in place, no relocation ---------- */
+
+owl-mascot.tap-flap .wing-simple-left,
+owl-mascot.tap-flap .wing-simple-right {
+  animation: wingSimpleFadeOut 0.15s ease-out forwards;
+}
+owl-mascot.tap-flap .wing-big-left {
+  opacity: 1;
+  animation: wingBigTapL 0.5s ease-in-out;
+}
+owl-mascot.tap-flap .wing-big-right {
+  opacity: 1;
+  animation: wingBigTapR 0.5s ease-in-out;
+}
+
+@keyframes wingBigTapL {
+  0%   { transform: rotate(-15deg); opacity: 0; }
+  15%  { opacity: 1; }
+  50%  { transform: rotate(-55deg); opacity: 1; }
+  100% { transform: rotate(-15deg); opacity: 0; }
+}
+@keyframes wingBigTapR {
+  0%   { transform: rotate(15deg); opacity: 0; }
+  15%  { opacity: 1; }
+  50%  { transform: rotate(55deg); opacity: 1; }
+  100% { transform: rotate(15deg); opacity: 0; }
+}
+
+/* ---------- Send sequence: fly to button, grab, fly away ---------- */
+
+owl-mascot.flying-to-target,
+owl-mascot.flying-away {
+  opacity: 1;
+}
+
+owl-mascot.flying-to-target .wing-simple-left,
+owl-mascot.flying-to-target .wing-simple-right,
+owl-mascot.flying-away .wing-simple-left,
+owl-mascot.flying-away .wing-simple-right {
+  animation: wingSimpleFadeOut 0.3s ease-out forwards;
+}
+
+owl-mascot.flying-to-target .wing-big-left {
+  opacity: 1;
+  animation: wingBigFlapOutL 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+owl-mascot.flying-to-target .wing-big-right {
+  opacity: 1;
+  animation: wingBigFlapOutR 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+owl-mascot.flying-away .wing-big-left {
+  opacity: 1;
+  animation: wingBigFlapOutL 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+owl-mascot.flying-away .wing-big-right {
+  opacity: 1;
+  animation: wingBigFlapOutR 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes wingBigFlapOutL {
+  0%   { transform: rotate(-15deg); opacity: 0; }
+  15%  { opacity: 1; }
+  30%  { transform: rotate(-48deg); }
+  50%  { transform: rotate(-20deg); }
+  70%  { transform: rotate(-50deg); }
+  100% { transform: rotate(-30deg); opacity: 1; }
+}
+@keyframes wingBigFlapOutR {
+  0%   { transform: rotate(15deg); opacity: 0; }
+  15%  { opacity: 1; }
+  30%  { transform: rotate(48deg); }
+  50%  { transform: rotate(20deg); }
+  70%  { transform: rotate(50deg); }
+  100% { transform: rotate(30deg); opacity: 1; }
+}
+
+@keyframes wingSimpleFadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+owl-mascot.flying-to-target .owl-head,
+owl-mascot.flying-away .owl-head { animation: none; transform: rotate(0deg); }
+owl-mascot.flying-to-target .owl-eyelid,
+owl-mascot.flying-away .owl-eyelid { animation: none !important; transform: scaleY(0) !important; opacity: 0 !important; }
+
+owl-mascot.flying-to-target {
+  animation: owlFlyToTarget 0.7s ease-in-out forwards;
+}
+@keyframes owlFlyToTarget {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(var(--to-target-dx, 0px), var(--to-target-dy, 0px)) rotate(-6deg); }
+}
+
+.owl-envelope.grabbing {
+  animation: envelopeGrab 0.35s ease-out forwards;
+}
+@keyframes envelopeGrab {
+  0%   { opacity: 0; transform: translateY(14px) scale(0.7); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+owl-mascot.flying-away {
+  animation: owlFlyAway 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes owlFlyAway {
+  0% {
+    transform: translate(var(--to-target-dx, 0px), var(--to-target-dy, 0px)) rotate(-6deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+      calc(var(--to-target-dx, 0px) + var(--away-dx, 0px)),
+      calc(var(--to-target-dy, 0px) + var(--away-dy, 0px))
+    ) rotate(18deg) scale(0.6);
+    opacity: 0;
+  }
+}

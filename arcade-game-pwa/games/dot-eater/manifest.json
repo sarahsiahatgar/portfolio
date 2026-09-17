@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/dot-eater/",
+  "name": "Dot Eater",
+  "short_name": "Dot Eater",
+  "start_url": "./game-dot-eater.html",
+  "scope": "/arcade-game-pwa/games/dot-eater/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-dot-eater.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-dot-eater.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

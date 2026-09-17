@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.run/@google/genai"
+    }
+  }
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Meal-Prep Agent | Sara's Portfolio</title>
+  <link rel="icon" href="/img/logo.WebP">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/globalstyle.css">
+  <link rel="stylesheet" href="kitchen-byte.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>    
+
+  <!-- Agent Main Card Container -->
+  <main class="kitchen-card">
+    <div class="kitchen-header">
+      <span class="info-icon" tabindex="0" onclick="this.classList.toggle('active')">i
+        <span class="info-tooltip">
+          This standalone Kitchen Byte Agent coordinates AI to plan zero-waste weekly menus tailored to grocery packaging, local store addresses, and optional postal codes.
+        </span>
+      </span>
+      <h1>Kitchen Byte</h1>
+    </div>
+
+    <!-- Project Introduction -->
+    <p>
+      Tired of guessing what to cook or wasting leftover ingredients? Configure your household profile below, customize your planning schedule, fitness goals, and generate a zero-waste meal plan with smart supermarket coordinates and aisle-by-aisle grocery lists.
+    </p>
+
+    <!-- Meal Prep Configuration Widget -->
+    <div class="kitchen-analyzer-widget">
+      <h3>Household & Shopping Parameters</h3>
+      
+      <!-- Row 1: Household Size & Optimization Strategy -->
+      <div class="kitchen-form-row">
+        <div class="kitchen-form-group">
+          <label for="householdSize">
+            <span class="field-info-btn" title="Total number of people eating these meals. Portions scale automatically.">i</span>
+            Household Size
+          </label>
+          <select id="householdSize">
+            <option value="1">1 Person</option>
+            <option value="2" selected>2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4">4+ Persons</option>
+          </select>
+        </div>
+
+        <div class="kitchen-form-group">
+          <label for="prepGoal">
+            <span class="field-info-btn" title="Prioritize maximum budget savings or fast preparation convenience.">i</span>
+            Optimization Strategy
+          </label>
+          <select id="prepGoal">
+            <option value="money">💰 Money Saving (Max Budget / Zero Waste)</option>
+            <option value="time">⏱️ Time Saving (Quick Prep & Batch Cooking)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 2: Planning Horizon, Meals per Day, Breakfast, Dessert -->
+      <div class="kitchen-form-row four-col">
+        <div class="kitchen-form-group">
+          <label for="planningDays">
+            <span class="field-info-btn" title="How many days ahead you want to plan your weekly menu.">i</span>
+            Planning Horizon
+          </label>
+          <select id="planningDays">
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3" selected>3 Days</option>
+            <option value="4">4 Days</option>
+            <option value="5">5 Days</option>
+            <option value="6">6 Days</option>
+            <option value="7">7 Days</option>
+          </select>
+        </div>
+
+        <div class="kitchen-form-group">
+          <label for="mealsPerDay">
+            <span class="field-info-btn" title="Number of main cooked meals per day.">i</span>
+            Main Meals/Day
+          </label>
+          <select id="mealsPerDay">
+		    <option value="1">1 Meal</option>
+            <option value="2">2 Meals</option>
+            <option value="3" selected>3 Meals</option>
+			<option value="4">4 Meals</option>
+			<option value="5">5 Meals</option>
+          </select>
+        </div>
+
+        <div class="kitchen-form-group">
+          <label>
+            <span class="field-info-btn" title="Add a structured morning meal routine to your daily plan.">i</span>
+            Include Breakfast
+          </label>
+          <div class="toggle-container">
+            <input type="checkbox" id="breakfastToggle" checked />
+            <label for="breakfastToggle" class="toggle-slider-label"><span></span></label>
+          </div>
+        </div>
+
+        <div class="kitchen-form-group">
+          <label>
+            <span class="field-info-btn" title="Appends macro-friendly, low-calorie sweet treats using leftover ingredients.">i</span>
+            Healthy Dessert
+          </label>
+          <div class="toggle-container">
+            <input type="checkbox" id="dessertToggle" />
+            <label for="dessertToggle" class="toggle-slider-label"><span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Daily Calorie Goal & Dietary Options -->
+      <div class="kitchen-form-row">
+        <div class="kitchen-form-group">
+          <label for="calorieGoal">
+            <span class="field-info-btn" title="Target daily calories per person. Leave blank to let the AI calculate your optimal intake.">i</span>
+            Daily Calorie Goal (Optional)
+          </label>
+          <input type="number" id="calorieGoal" min="1000" max="5000" step="50" placeholder="e.g., 2000 or leave blank" />
+        </div>
+
+        <div class="kitchen-form-group">
+          <label for="dietarySelect">
+            <span class="field-info-btn" title="Choose common dietary preferences or styles.">i</span>
+            Dietary Preferences
+          </label>
+          <select id="dietarySelect">
+            <option value="none" selected>✨ Standard / No Restrictions</option>
+            <option value="vegetarian">🥕 Vegetarian</option>
+            <option value="vegan">🌱 Vegan</option>
+            <option value="gluten-free">🌾 Gluten-Free</option>
+            <option value="lactose-free">🥛 Lactose-Free</option>
+            <option value="high-protein">💪 High-Protein Fitness</option>
+            <option value="low-carb">🥑 Low-Carb / Keto</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 4: Custom Notes / Additional Allergies -->
+      <div class="kitchen-form-row">
+        <div class="kitchen-form-group" style="grid-column: span 2;">
+          <label for="customDietaryNotes">
+            <span class="field-info-btn" title="Write anything else: specific allergies (e.g., peanuts), disliked foods, or custom requests.">i</span>
+            Custom Notes / Extra Allergies (Optional)
+          </label>
+          <input type="text" id="customDietaryNotes" maxlength="120" placeholder="e.g., Allergic to peanuts, hate cilantro, extra garlic" />
+        </div>
+      </div>
+
+      <!-- Row 5: Preferred Supermarket & Postal Code -->
+      <div class="kitchen-form-row">
+        <div class="kitchen-form-group">
+          <label for="preferredShop">
+            <span class="field-info-btn" title="Tailors the grocery list and aisle sorting to your favorite store chain.">i</span>
+            Preferred Supermarket
+          </label>
+          <select id="preferredShop">
+            <option value="no-preference" selected>🌐 No Preference (Best Local Match)</option>
+            <option value="Aldi">Aldi Süd / Aldi Nord</option>
+            <option value="Lidl">Lidl</option>
+            <option value="Rewe">Rewe</option>
+            <option value="Edeka">Edeka</option>
+            <option value="Netto">Netto Marken-Discount</option>
+            <option value="Penny">Penny</option>
+            <option value="Bioshop">Bioshop / Alnatura / Denn's</option>
+          </select>
+        </div>
+
+        <div class="kitchen-form-group">
+          <label for="postalCode">
+            <span class="field-info-btn" title="Enter a postal code (PLZ) to locate nearby grocery stores, or leave blank.">i</span>
+            Postal Code (Optional)
+          </label>
+          <input type="text" id="postalCode" maxlength="10" placeholder="e.g., 40213 or leave blank" />
+        </div>
+      </div>
+     
+      <!-- Action Buttons -->
+      <div class="kitchen-btn-group">
+        <button type="button" id="generateBtn" onclick="generateMealPlan()">Generate Custom Meal Plan & Shopping List</button>
+        <button type="button" id="stopBtn" onclick="stopMealPlanGeneration()" class="stop-btn" style="display: none;">Stop Generation</button>
+      </div>
+      
+      <!-- Split-Screen Results Area -->
+      <div id="resultOutput">
+        <p style="opacity: 0.7; margin: 0; text-align: center;">Your custom meal plan, store address, daily macros, and aisle-by-aisle grocery list will appear here...</p>
+      </div>
+    </div>
+    
+  </main>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { generateMealPlan } from './js/kitchen-byte.js';
+    import { initHamburger } from '../../js/global-hamburger.js';
+    import { initNavigation } from '../../js/global-navigation-and-footer.js';
+
+    window.generateMealPlan = generateMealPlan;
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      await initNavigation();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+nibble-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+nibble-card .game-card {
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+nibble-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 580px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 3px;
+}
+
+.snake-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.snake-items-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.snake-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.snake-body-box {
+  width: 14px;
+  height: 14px;
+  background: #b5be8a;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.snake-food-box {
+  width: 14px;
+  height: 14px;
+  background: #e74c3c;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.snake-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+/* RETRO LED SCREEN */
+.snake-led-screen {
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 6px 0;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8), 0 0 5px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  margin-top: -10px;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snake-level-header {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: var(--color-accent, #d1db9e);
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.8);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+nibble-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+nibble-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#snakeCanvasWrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #b5be8a;
+  background-color: var(--bg-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+canvas#snakeCanvas {
+  background-color: var(--bg-dark);	
+  display: block;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.snake-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 280px;
+  margin: 4px auto 2px auto;
+  font-size: 0.75rem;
+  color: #b5be8a;
+}
+
+.snake-mode-btn {
+  padding: 2px 10px;
+  font-size: 0.75rem;
+}
+
+.snake-pad-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px auto;
+}
+
+.snake-trackpad {
+  display: grid;
+  grid-template-areas:
+    ".   up   ."
+    "left center right"
+    ".   down   .";
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 46px 46px 46px;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(30, 35, 25, 0.4);
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(181, 190, 138, 0.3);
+  margin: 6px auto;
+  touch-action: none;
+}
+
+.snake-trackpad-grid {
+  display: grid;
+  position: absolute;
+}
+
+.snake-swipe-pad {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background: rgba(30, 35, 25, 0.4);
+  border-radius: 14px;
+  border: 1px solid rgba(181, 190, 138, 0.3);
+  box-sizing: border-box;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.snake-swipe-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.snake-swipe-label {
+  transition: opacity 0.12s ease, fill 0.12s ease;
+}
+
+.snake-swipe-label.snake-swipe-label-active {
+  opacity: 1;
+  fill: #f1c40f;
+}
+
+.snake-action-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 240px;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.snake-trackpad .control-btn {
+  background: rgba(181, 190, 138, 0.1);
+  border: 1px solid rgba(181, 190, 138, 0.25);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: #b5be8a;
+  font-size: 0.85rem;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.snake-trackpad .control-btn:hover {
+  background: rgba(181, 190, 138, 0.25);
+}
+
+.snake-trackpad .control-btn:active {
+  background: rgba(181, 190, 138, 0.25);
+  transform: scale(0.92);
+}
+
+.pad-up { grid-area: up; }
+.pad-left { grid-area: left; }
+.pad-center { grid-area: center; background: rgba(255, 255, 255, 0.02); border-radius: 4px; }
+.pad-right { grid-area: right; }
+.pad-down { grid-area: down; }
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(20%);
+}
+
+.snake-action-row .action-btn {
+  height: 38px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snake-custom-dropdown-container {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.85rem;
+  flex: 2.2;
+  min-width: 85px;
+}
+
+.snake-custom-select-trigger {
+  background: var(--bg-dark, #141812);
+  color: var(--color-accent, #b5be8a);
+  border: 1px solid var(--color-accent, #b5be8a);
+  border-radius: 8px;
+  padding: 0 8px;
+  height: 38px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  top: 2px;
+}
+
+.snake-custom-option.selected {
+  background-color: color-mix(in srgb, var(--color-accent, #b5be8a) 20%, transparent);
+  color: var(--color-accent, #b5be8a);
+  font-weight: bold;
+}
+
+.snake-custom-select-trigger:hover:not(.disabled) {
+  border-color: var(--color-accent, #b5be8a);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.snake-custom-select-arrow {
+  font-size: 0.65rem;
+  margin-left: 4px;
+  transition: transform 0.25s ease;
+}
+
+.snake-custom-select-options {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  margin-bottom: 6px;
+  background: var(--bg-dark, #141812);
+  border: 1px solid var(--color-accent, #b5be8a);
+  border-radius: 8px;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  max-height: 160px;
+  overflow-y: auto;
+  z-index: 100;
+  min-width: 110px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent, #b5be8a) var(--bg-dark, #141812);
+}
+
+.snake-custom-select-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.snake-custom-select-options::-webkit-scrollbar-track {
+  background: var(--bg-dark, #141812);
+  border-radius: 0 8px 8px 0;
+}
+
+.snake-custom-select-options::-webkit-scrollbar-thumb {
+  background: var(--color-accent, #b5be8a);
+  border-radius: 3px;
+}
+
+.snake-custom-select-options::-webkit-scrollbar-thumb:hover {
+  background: rgba(181, 190, 138, 0.8);
+}
+
+.snake-custom-select-options.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.snake-custom-select-options.closing {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+
+.snake-custom-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  color: var(--color-accent, #b5be8a);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.snake-custom-option:hover {
+  background-color: var(--color-accent, #b5be8a);
+  color: var(--bg-dark, #141812);
+}
+
+.snake-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 24, 18, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10;
+  box-sizing: border-box;
+  padding: 15px;
+  pointer-events: none;
+}
+
+@keyframes snakeSlowBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.snake-blink-text {
+  animation: snakeSlowBlink 2.5s infinite ease-in-out;
+}
+
+.snake-neon-red {
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+}

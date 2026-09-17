@@ -1,0 +1,448 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+gorilla-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+gorilla-card .game-card {
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+gorilla-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 580px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+.gorilla-title {
+  font-size: 0.95rem;
+}
+
+.gorilla-mb-6 {
+  margin-bottom: 6px !important;
+}
+
+.gorilla-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.gorilla-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gorilla-items-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 6px;
+  background: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+gorilla-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+gorilla-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* LED MARQUEE SCREEN STYLES */
+#gorillaLedMarquee.arcade-marquee-screen {
+  width: 280px;
+  height: 40px;
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 0 4px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8), 0 0 4px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  margin-top: -15px;
+}
+
+#gorillaLedMarquee .arcade-marquee-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #ff4d4d;
+  text-shadow: 0 0 6px #ff0000, 0 0 12px #ff0000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+}
+
+#gorillaLedMarquee.moving-state .arcade-marquee-text {
+  animation-name: gorillaMarqueeScroll;
+  animation-duration: var(--marquee-duration, 3.5s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gorillaMarqueeScroll {
+  0% { transform: translate3d(100%, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* BROKEN NEON TEXT FLICKER (OFFLINE MODE ONLY) */
+#gorillaLedMarquee.is-offline.moving-state .arcade-marquee-text {
+  color: #f59e0b; /* Amber LED tint */
+  animation-name: gorillaMarqueeScroll, brokenNeonFlicker;
+  animation-duration: var(--marquee-duration, 3.5s), 1.8s;
+  animation-timing-function: linear, steps(1, end);
+  animation-iteration-count: infinite, infinite;
+}
+
+@keyframes brokenNeonFlicker {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 2px #f59e0b, 0 0 6px rgba(245, 158, 11, 0.6), 0 0 12px rgba(245, 158, 11, 0.3);
+  }
+  2% {
+    opacity: 0.15; /* Sudden brightness drop */
+    text-shadow: none;
+  }
+  4% {
+    opacity: 1; /* Buzz back */
+  }
+  5% {
+    opacity: 0.3; /* Sputter */
+    text-shadow: none;
+  }
+  7% {
+    opacity: 0.9;
+  }
+  8% {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 1;
+    text-shadow: 0 0 2px #f59e0b, 0 0 6px rgba(245, 158, 11, 0.6);
+  }
+  55% {
+    opacity: 1;
+  }
+  57% {
+    opacity: 0.2; /* Mid-scroll glitch */
+    text-shadow: none;
+  }
+  59% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0.3;
+    text-shadow: none;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gorilla-pickers-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 260px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.gorilla-picker-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.gorilla-picker-label {
+  color: #b5be8a;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.ios-picker-container {
+  position: relative;
+  width: 75px;
+  height: 105px;
+  overflow: hidden;
+  background: var(--bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--color-accent);
+  display: flex;
+  justify-content: center;
+}
+
+.ios-picker-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ios-picker-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ios-picker-item {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.ios-picker-highlight {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  pointer-events: none;
+  background: rgba(181, 190, 138, 0.12);
+}
+
+#angleInput, 
+#powerInput {
+  height: 34px;
+  font-size: 0.9rem !important;
+}
+
+canvas#gorillaCanvas {
+  background-color: var(--bg-dark);
+  display: block;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.game-inner-header {
+  position: relative;
+}
+
+/* Offline Strikethrough Icon Badge */
+.gorilla-offline-icon-badge {
+  display: none;
+  position: relative;
+  font-size: 11px;
+  line-height: 1;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 24, 39, 0.85);
+  border-radius: 50%;
+  opacity: 0.95;
+  animation: gorillaHardwarePulse 2s infinite ease-in-out;
+  box-sizing: border-box;
+}
+
+.gorilla-offline-icon-badge.is-visible {
+  display: inline-flex;
+}
+
+.gorilla-offline-icon-badge .offline-strike {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 1px;
+  background-color: #9ca3af;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+@keyframes gorillaHardwarePulse {
+  0%, 100% {
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+  50% {
+    border: 1px solid rgba(245, 158, 11, 0.9);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  }
+}
+
+.game-status, #gorillaStatus {
+  font-size: 0.75rem;
+}
+
+#gorillaStatus {
+  margin-top: 5px;
+}
+
+.gorilla-controls-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 260px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.gorilla-full-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.gorilla-btn-small {
+  font-size: 0.75rem;
+}
+
+.gorilla-btn-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.gorilla-flex-btn {
+  flex: 1;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+#gorillaSoundBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.gorilla-speaker-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+#gorillaSoundBtn.muted .gorilla-sound-waves {
+  display: none;
+}
+
+@keyframes gorillaSlowBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.gorilla-blink-text {
+  animation: gorillaSlowBlink 2.5s infinite ease-in-out;
+}
+
+.gorilla-neon-red {
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+}
+
+#gorillaCanvasWrapper {
+  position: relative;
+  display: inline-block;
+  width: 280px;
+  height: 230px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--color-accent, #b5be8a);
+  background-color: var(--bg-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#gorillaOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 24, 18, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 10;
+  box-sizing: border-box;
+  padding: 15px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .gorilla-card .mem-title {
+    font-size: 0.9rem;
+  }
+
+  .gorilla-card .game-title-wrapper h2 {
+    font-size: 0.9rem;
+  }
+  
+  .gorilla-card .help-title {
+    font-size: 0.9rem;
+  }
+}

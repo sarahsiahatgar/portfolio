@@ -1,0 +1,22 @@
+{
+  "id": "/arcade-game-pwa/games/set/",
+  "name": "Set",
+  "short_name": "Set",
+  "start_url": "./game-set.html",
+  "scope": "/arcade-game-pwa/games/set/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./game-icon-set.WebP",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./game-icon-set.WebP",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrum Sandbox | Sara's Portfolio</title>
+  <link rel="icon" href="/img/logo.WebP">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/globalstyle.css">
+  <link rel="stylesheet" href="scrum-sandbox.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <div id="header-placeholder"></div>
+
+  <a href="#helpSidebar" class="floating-qa-btn" aria-label="Jump to Help and Q&A">Q&A</a>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <span class="eyebrow">Project</span>
+    <h1>Agile Scrum & Project Sandbox</h1>
+    <div class="title-rule"></div>
+    <div class="title-rule-thin"></div>
+  </section>
+
+  <!-- Project Introduction -->
+  <div class="note-card">
+    <span class="info-icon" tabindex="0" onclick="this.classList.toggle('active')">i
+      <span class="info-tooltip">
+        Welcome to my Agile Scrum simulator, designed to bridge the gap between theoretical project management and technical execution. Select a role below to explore how Product Owners, Scrum Masters, and Developers collaborate during a sprint.
+      </span>
+    </span>
+    <p>
+      Welcome to my Agile Scrum simulator! Designed to bridge the gap between theoretical project management and technical execution. Select a role below to explore how Product Owners, Scrum Masters, and Developers collaborate during a sprint.
+    </p>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div class="scrum-layout-wrapper">
+
+    <!-- LEFT COLUMN: SCRUM Workspace Card -->
+    <main class="widget-card scrum-card">
+
+      <div class="hp-wrap" aria-hidden="true">
+        <label for="companyField">Company</label>
+        <input type="text" id="companyField" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- Cloud Project Workspace Bar -->
+      <div class="cloud-workspace-bar">
+        <h3>Cloud Workspace (AWS DynamoDB)</h3>
+        <p class="workspace-desc">
+          Give your project a unique name to save your board data to AWS DynamoDB, or choose an exemplary project template below to get started instantly. You can reload your project by typing its name.</br>
+          <em>Note: Inactive projects automatically expire after 7 days.</em>
+        </p>
+
+        <!-- Exemplary Project Templates -->
+        <div class="templates-section">
+          <label class="templates-label">❖ Quick Start with Exemplary Projects:</label>
+          <div class="templates-grid">
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('ecommerce')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-cart"></use></svg>
+				E-Commerce Checkout
+			</button>
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('cloudmig')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-cloud-migration"></use></svg>
+				Cloud Serverless Migration
+			</button>
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('mobileapp')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-mobile"></use></svg>
+				Mobile App Redesign
+			</button>
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('scrumapp')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-tracker"></use></svg>
+				Scrum Sprint Tracker
+			</button>
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('musicstream')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-music"></use></svg>
+				Music Streaming App
+			</button>
+			<button type="button" class="template-btn" onclick="loadExemplaryProject('cookingapp')">
+				<svg class="icon" aria-hidden="true" width="16" height="16"><use href="svg/scrum-sandbox-icons.svg#icon-cooking"></use></svg>
+				Smart Recipe & Cooking
+			</button>
+		  </div>
+        </div>
+
+        <div class="workspace-controls">
+          <input type="text" id="workspaceNameInput" class="workspace-input" maxlength="100" placeholder="Enter project name (e.g., sara-sprint-alpha)" />
+          <button type="button" class="btn btn-save" onclick="saveProjectToCloud()">Save to Cloud</button>
+          <button type="button" class="btn btn-load" onclick="loadProjectFromCloud()">Load Project</button>
+          <button type="button" class="btn btn-fresh" onclick="startFreshProject()">Start Fresh</button>
+        </div>
+        <div id="cloudStatusMsg" class="cloud-status-msg" aria-live="polite"></div>
+      </div>
+
+      <!-- Role Selector -->
+      <div class="role-selector-container">
+        <label>Select Your Agile Role:</label>
+        <div class="role-buttons">
+          <button type="button" class="role-btn active" data-role="product-owner" onclick="switchRole('product-owner')">Product Owner</button>
+          <button type="button" class="role-btn" data-role="scrum-master" onclick="switchRole('scrum-master')">Scrum Master (AI)</button>
+          <button type="button" class="role-btn" data-role="developer" onclick="switchRole('developer')">Developer (Kanban)</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Role View Container -->
+      <div id="roleViewContainer" class="scrum-workspace" aria-live="polite">
+        <div class="workspace-placeholder">
+          <h3>Loading Scrum Workspace...</h3>
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN: Help & Q&A Sidebar -->
+    <aside class="widget-card help-sidebar" id="helpSidebar">
+      <div class="help-sidebar-header" onclick="toggleHelpSidebar()">
+        <h3>
+		  <svg class="icon" aria-hidden="true" width="18" height="18" style="vertical-align: -3px; margin-right: 6px;"><use href="svg/scrum-sandbox-icons.svg#icon-help"></use></svg>
+		  Sandbox Guide &amp; FAQ
+		</h3>
+        <div class="help-toggle-line-container">
+          <div class="help-toggle-line"></div>
+          <div class="help-toggle-arrow">▼</div>
+        </div>
+      </div>
+
+      <div class="help-content">
+        <div class="qa-item">
+          <div class="qa-question">Q: How do deadlines & timeline tracking work?</div>
+          <div class="qa-answer">Each sprint is evaluated against a target deadline. The system calculates completed story points versus elapsed time to determine if your project is <strong>On Track</strong>, <strong>At Risk</strong>, or <strong>Delayed</strong>.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: What does the Product Owner role do and how AI is related to it?</div>
+          <div class="qa-answer">The PO authors user stories following the INVEST format ("As a... I want... So that...") and receives story audits instantly from the Amazon Nova Micro AI model.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: What does the Scrum Master role do and how AI is related to it?</div>
+          <div class="qa-answer">The Scrum Master facilitates workflow management, monitors sprint health, and leverages Amazon Nova Micro AI to analyze sprint risks and provide actionable data-driven guidance.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: How do Developers use the Kanban board?</div>
+          <div class="qa-answer">Developers manage tasks across columns (To Do &rarr; In Progress &rarr; Done). You can advance tasks forward or move them back if impediments occur.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: What are Story Points?</div>
+          <div class="qa-answer">Story points measure task complexity, effort, and risk rather than exact hours, helping teams plan velocity sustainably.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: How is Schedule Health calculated?</div>
+          <div class="qa-answer">The system compares elapsed sprint time against completed story points. If work completion falls significantly behind the schedule timeline, it dynamically flags the sprint as At Risk or Delayed.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: What are the Exemplary Project templates?</div>
+          <div class="qa-answer">Pre-built, real-world project scenarios (like an E-Commerce Checkout or Cloud Serverless Migration) that let you instantly load realistic backlogs and target deadlines to test how the sandbox functions without starting from scratch.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: How does Cloud Persistence work?</div>
+          <div class="qa-answer">Entering a project name and clicking <strong>Save to Cloud</strong> stores your backlog and sprint settings securely in AWS DynamoDB, while clicking <strong>Load from Cloud</strong> retrieves your saved workspace instantly.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: How long are projects saved in AWS DynamoDB?</div>
+          <div class="qa-answer">Saved projects persist in the cloud via AWS API Gateway and Lambda, but feature a rolling 7-day TTL (Time-To-Live) expiration policy to keep the sandbox database clean and optimized for portfolio visitors.</div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">Q: Can the Exemplary Project templates be modified or overwritten?</div>
+          <div class="qa-answer">You can freely add, remove, or edit tasks within any loaded template, however the system protects built-in projects by requiring you to save your modified workspace under a new, unique name.</div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <button id="backToTopBtn" aria-label="Back to top">↑</button>
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initNavigation } from '../../js/global-navigation-and-footer.js';
+    import { toggleHelpSidebar } from '../../js/global-hamburger.js';
+    import { 
+      initScrumBoard, switchRole, saveProjectToCloud, loadProjectFromCloud, 
+      loadExemplaryProject, startFreshProject, addCustomUserStory, 
+      updateTaskStatus, analyzeSprintRisk, deleteUserStory, updateSprintTimeline,
+      toggleCalendar, openCalendar, closeCalendar, setCalendarToday, moveCalendarMonth
+    } from './scrum-sandbox.js';
+
+    window.toggleHelpSidebar = toggleHelpSidebar;
+    window.switchRole = switchRole;
+    window.saveProjectToCloud = saveProjectToCloud;
+    window.loadProjectFromCloud = loadProjectFromCloud;
+    window.loadExemplaryProject = loadExemplaryProject;
+    window.startFreshProject = startFreshProject;
+    window.addCustomUserStory = addCustomUserStory;
+    window.updateTaskStatus = updateTaskStatus;
+    window.analyzeSprintRisk = analyzeSprintRisk;
+    window.deleteUserStory = deleteUserStory;
+    window.updateSprintTimeline = updateSprintTimeline;
+
+    window.toggleCalendar = toggleCalendar;
+    window.openCalendar = openCalendar;
+    window.closeCalendar = closeCalendar;
+    window.setCalendarToday = setCalendarToday;
+    window.moveCalendarMonth = moveCalendarMonth;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await initNavigation();
+      initScrumBoard();
+    });
+  </script>
+</body>
+</html>

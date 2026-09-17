@@ -1,0 +1,412 @@
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"],
+.role-btn,
+.floating-qa-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mastermind-card {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+
+mastermind-card .game-card {
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+mastermind-card .game-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 520px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.mm-title {
+  font-size: 0.95rem;
+}
+
+.mm-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mm-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.mm-legend-pin {
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.mm-pin-black {
+  background: #000;
+  border: 1px dashed #777;
+}
+
+.mm-pin-white {
+  background: #fff;
+  border: 1px dashed #777;
+}
+
+.mastermind-board {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 260px;
+  box-sizing: border-box;
+}
+
+.mm-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.mm-row.active-row {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #f1c40f;
+}
+
+.mm-pegs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.mm-slot {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 2px solid #A58D5B;
+  background-color: #2e3429;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  max-height: 26px;
+}
+
+.mm-slot.filled {
+  border: 2px solid #786642;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.mm-row.active-row .mm-slot:focus {
+  outline: none;
+}
+
+.mm-slot.active-slot {
+  border-color: #C9A865 !important;
+  box-shadow: 0 0 8px rgba(241, 196, 15, 0.8);
+}
+
+.mm-feedback {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  width: 22px;
+}
+
+.mm-feedback-pin {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px dashed #7f8c8d;
+  width: 8px;
+  justify-self: center;
+  align-self: center;
+}
+
+.mm-color-picker {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 260px;
+  box-sizing: border-box;
+}
+
+.mm-hidden {
+  display: none !important;
+}
+
+.mm-color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #A58D5B;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mm-color-btn[data-color="Red"] { background: #c9182b; }
+.mm-color-btn[data-color="Yellow"] { background: #e09f00; }
+.mm-color-btn[data-color="Green"] { background: #1e7838; }
+.mm-color-btn[data-color="Blue"] { background: #264673; }
+.mm-color-btn[data-color="Cyan"] { background: #0082C7; }
+.mm-color-btn[data-color="Orange"] { background: #d95d00; }
+
+.mm-color-btn:hover {
+  transform: scale(1.1);
+  border-color: #C4A86C;
+}
+
+.mm-color-btn:active {
+  transform: scale(0.95);
+}
+
+.mm-cvd-label {
+  color: #E6D3A7;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.mm-secret-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mm-secret-peg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #777;
+}
+
+.mm-help-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: var(--color-accent, #d1db9e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mm-items-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: rgba(30, 35, 25, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mm-actions-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.mm-btn-fixed {
+  width: 105px;
+  white-space: nowrap;
+}
+
+mastermind-card .game-help-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card-body);
+  border-radius: 20px;
+  z-index: 50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+mastermind-card .game-help-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* RETRO LED SCREEN */
+mastermind-card .arcade-marquee-screen {
+  background-color: #0d1109;
+  border: 2px solid #3b4432;
+  border-radius: 6px;
+  padding: 4px 6px;
+  width: 100%;
+  max-width: 260px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8), 0 0 5px rgba(181, 190, 138, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: -11px;
+  margin-bottom: 7px;
+  overflow: hidden;
+  position: relative;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base Text */
+mastermind-card .arcade-marquee-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000, 0 0 25px #ff0000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  animation: marqueeScroll 6s linear infinite;
+}
+
+/* Active Gameplay State */
+mastermind-card .arcade-marquee-screen.active-state .arcade-marquee-text {
+  color: var(--color-accent, #d1db9e);
+  text-shadow: 0 0 8px rgba(209, 219, 158, 0.8);
+  animation: retroRiseIn 0.4s ease-out forwards;
+}
+
+/* 🏆 Win State */
+mastermind-card .arcade-marquee-screen.win-state .arcade-marquee-text {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+  animation: retroRiseIn 0.8s ease-out forwards, goldGlowPulse 1.5s infinite alternate ease-in-out 0.8s;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+/* ❌ Game Over State */
+mastermind-card .arcade-marquee-screen.game-over-state {
+  height: auto;
+  padding: 6px;
+}
+
+mastermind-card .arcade-marquee-screen.game-over-state .arcade-marquee-text {
+  animation: none;
+  color: #ff3333;
+  text-shadow: 0 0 6px rgba(255, 51, 51, 0.7);
+  white-space: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes marqueeScroll {
+  0% { 
+    transform: translate3d(100%, 0, 0); 
+  }
+  100% { 
+    transform: translate3d(-100%, 0, 0); 
+  }
+}
+
+@keyframes retroRiseIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 120%, 0);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes goldGlowPulse {
+  0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.6); }
+  100% { text-shadow: 0 0 12px rgba(255, 215, 0, 1); }
+}
+
+@media (max-width: 420px) {
+  mastermind-card .game-card {
+    width: 100%;
+  }
+
+  .mastermind-board,
+  .mm-color-picker,
+  mastermind-card .arcade-marquee-screen {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .mm-slot {
+    min-width: 0;
+    width: 28px;
+    height: 28px;
+    max-height: 28px;
+  }
+
+  .mm-color-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mm-btn-fixed {
+    width: 95px;
+  }
+}
